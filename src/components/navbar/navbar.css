@@ -2,35 +2,36 @@ nav {
     display: flex;
     flex-direction: column;
     background-color: #18181B;
-    width: 4%;
+    width: 96px;
     position: fixed;
     left: 0;
     top: 0;
     height: 100%;
     transition: width 0.3s ease-in-out;
     border-right: 1px solid #555;
+    z-index: 1;
 }
 
 .icon {
-    margin-left:1vw;
-    height: 1.2vw;
-    width: 1.2vw;
+    margin: 25px;
+    height: 30px;
+    width: 30px;
 }
 
 .modes {
     display: flex;
     flex-direction: column;
-    gap: 1vw;
+    gap: 25px;
     align-items: center;
-    margin-top: 1vw;
+    margin-top: 25px;
 }
 
 .mode {
     display: flex;
     align-items: center;
     justify-content: left;
-    width: 3vw;
-    height: 3vw;
+    width: 75px;
+    height: 75px;
     background-color: #27272A;
     border-radius: 1vw;
     cursor: pointer;
@@ -39,7 +40,7 @@ nav {
 }
 
 .nav-expanded .mode {
-    width: 8vw;
+    width: 192px;
 }
 
 .label {
@@ -47,14 +48,13 @@ nav {
 }
 
 .nav-expanded .label {
-    opacity:1;
+    opacity: 1;
     display: flex;
-    margin-left:1vw;
-    font-size:1.25vw;
-    font-style:normal;
-    font-weight:bold;
-    font-family:'Montserrat';
-    transition-delay:0.2s;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: bold;
+    font-family: 'Montserrat';
+    transition-delay: 0.2s;
 }
 
 nav a:hover .mode {
@@ -63,5 +63,5 @@ nav a:hover .mode {
 }
 
 nav:hover {
-    width: 9%;
+    width: 218px;
 }
