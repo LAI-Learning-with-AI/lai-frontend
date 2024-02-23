@@ -28,7 +28,7 @@ function ChatMode() {
     return (
         <div className="quiz-sidebar">
             <div className="quiz-search">
-                test
+                Quiz
             </div>
             <div className="quiz-recent">
                 <FontAwesomeIcon icon={faCommentDots} />
