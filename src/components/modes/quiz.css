@@ -1,4 +1,4 @@
-.chat {
+.quiz {
     height: 85px;
     flex-shrink: 0;
     display: flex;
@@ -11,17 +11,17 @@
     font-style: normal;
 }
 
-.chat:hover {
+.quiz:hover {
     background-color: #18A0FB;
 }
 
-.chat-summary {
+.quiz-title {
     font-weight: bold;
     font-size: 20px;
     margin-left: 5px;
 }
 
-.chat-description {
+.quiz-tags {
     font-weight: normal;
     font-size: 14px;
     color: #DDDADA;

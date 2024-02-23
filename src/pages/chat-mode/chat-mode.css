@@ -1,4 +1,4 @@
-.sidebar {
+.chat-sidebar {
     display: flex;
     flex-direction: column;
     width: 266px;
@@ -10,14 +10,14 @@
     top: 0;
 }
 
-.search {
+.chat-search {
     flex-shrink: 0;
     height: 144px;
     background-color: #18181B;
     border-bottom: 1px solid #555;
 }
 
-.recent {
+.chat-recent {
     margin-left: 5px;
     padding-top: 5px;
     height: 20px;
@@ -28,7 +28,7 @@
     color: #DDDADA;
 }
 
-.recent-label {
+.chat-recent-label {
     margin-left: 5px;
 }
 

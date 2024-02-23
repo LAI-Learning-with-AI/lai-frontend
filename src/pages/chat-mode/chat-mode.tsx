@@ -25,13 +25,13 @@ function ChatMode() {
     }, []);
 
     return (
-        <div className="sidebar">
-            <div className="search">
+        <div className="chat-sidebar">
+            <div className="chat-search">
                 test
             </div>
-            <div className="recent">
+            <div className="chat-recent">
                 <FontAwesomeIcon icon={faCommentDots} />
-                <text className='recent-label'>RECENTS</text>
+                <text className='chat-recent-label'>RECENTS</text>
             </div>
             <div className="chats">
                 {chats.map((chat) => (

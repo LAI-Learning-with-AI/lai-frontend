@@ -9,10 +9,10 @@ interface Props {
 const Chat: React.FC<Props> = ({ title, description } ) => {
     return (
         <div className='chat'>
-            <div className='summary'>
+            <div className='chat-summary'>
                 {title}
             </div>
-            <div className='description'>
+            <div className='chat-description'>
                 {description}
             </div>
         </div>

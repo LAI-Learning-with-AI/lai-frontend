@@ -1,0 +1,39 @@
+.quiz-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 1816px;
+    height: 100%;
+    background-color: #27272A;
+    position: absolute;
+    left: 96px;
+    border-right: 1px solid #555;
+    top: 0;
+}
+
+.quiz-search {
+    flex-shrink: 0;
+    height: 72px;
+    background-color: #18181B;
+    border-bottom: 1px solid #555;
+}
+
+.quiz-recent {
+    margin-left: 5px;
+    padding-top: 5px;
+    height: 20px;
+    font-size: 14px;
+    font-style:normal;
+    font-weight:bold;
+    font-family:'Montserrat';
+    color: #DDDADA;
+}
+
+.quiz-recent-label {
+    margin-left: 5px;
+}
+
+.quizzes {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
