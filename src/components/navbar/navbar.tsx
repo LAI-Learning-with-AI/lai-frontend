@@ -9,19 +9,19 @@ function Navbar() {
     return (
         <nav className={expanded ? "nav-expanded" : ""} onMouseEnter={() => setExpanded(true)} onMouseLeave={() => setExpanded(false)}>
             <div className="modes">
-                <a href="#">
+                <a href="/">
                     <i className="mode">
                         <FontAwesomeIcon icon={faCommentDots} className='icon' />  
                         <span className="label">Chat</span>
                     </i>
                 </a>
-                <a href="#">
+                <a href="/learn">
                     <i className="mode">
                         <FontAwesomeIcon icon={faGraduationCap} className='icon' />               
                         <span className="label">Learn</span>
                     </i>
                 </a>
-                <a href="#">
+                <a href="/quiz">
                     <i className="mode">
                         <FontAwesomeIcon icon={faFileCircleQuestion} className='icon' />  
                         <span className="label">Quiz</span>
