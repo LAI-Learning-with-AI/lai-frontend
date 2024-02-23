@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './chat-mode.css';
+import Chat from '../../components/modes/chat.tsx'
 import { faCommentDots } from '@fortawesome/free-solid-svg-icons'
 
 
-function Chat() {
+function ChatMode() {
     return (
         <div className="sidebar">
             <div className="search">
@@ -14,6 +15,7 @@ function Chat() {
                 <text className='recent-label'>RECENTS</text>
             </div>
             <div className="chats">
+                <Chat title='Chat 1 Summary' description='Topics...' />
                 <div className="chat">
                     <div className="summary">
                         Chat 1 Summary
@@ -67,4 +69,4 @@ function Chat() {
     );
 }
 
-export default Chat;
+export default ChatMode;

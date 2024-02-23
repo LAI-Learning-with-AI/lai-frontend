@@ -1,5 +1,5 @@
 import Navbar from './components/navbar/navbar.tsx'
-import Chat from './pages/chat-mode/chat-mode.tsx'
+import ChatMode from './pages/chat-mode/chat-mode.tsx'
 import { BrowserRouter  as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Chat />} />
+        <Route path='/' element={<ChatMode />} />
       </Routes>
     </Router>
   )
