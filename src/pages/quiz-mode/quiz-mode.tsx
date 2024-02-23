@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './chat.css';
+import './quiz-mode.css';
 import { faCommentDots } from '@fortawesome/free-solid-svg-icons'
 
 
-function Chat() {
+function Quiz() {
     return (
         <div className="sidebar">
             <div className="search">
@@ -67,4 +67,4 @@ function Chat() {
     );
 }
 
-export default Chat;
+export default Quiz;
