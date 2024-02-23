@@ -2,9 +2,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './chat-mode.css';
 import Chat from '../../components/modes/chat.tsx'
 import { faCommentDots } from '@fortawesome/free-solid-svg-icons'
+import { useEffect } from 'react'
 
 
 function ChatMode() {
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_SERVER}/getChats`)
+            .then((response) => {
+                response.json().then ((res) => {
+                    console.log(res);
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+    });
+
     return (
         <div className="sidebar">
             <div className="search">

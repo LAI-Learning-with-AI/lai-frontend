@@ -10,7 +10,8 @@ Then install dependencies with:
 cd lai-frontend
 yarn install
 ```
-And run with:
+Then rename ```.env.sample``` to ```.env``` and add server url.  
+Run with:
 ```sh
 yarn dev
 ```
