@@ -11,7 +11,7 @@
   position: absolute;
   background: #1E1E1E;
   width: 820px;
-  height: 760px;
+  height: 780px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -74,6 +74,20 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+}
+
+.modal-button {
+  display: flex;
+  justify-content: right;
+}
+
+.modal-button .submit {
+  font-weight: bold;
+  background-color: #18A0FB;
+  border-radius: 20px;
+  height: 40px;
+  width: 160px;
+  font-size: 15px;
 }
 
 .modal-headers {

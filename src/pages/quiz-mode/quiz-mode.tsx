@@ -87,6 +87,9 @@ function ChatMode() {
                             Quiz Topics
                             <textarea placeholder='topic1, topic2, topic3, ...' />
                         </div>
+                        <div className='modal-button'>
+                            <button className='submit' onClick={toggleModal}>Start Quiz</button>
+                        </div>
                     </div>
                 </Modal>
                 <div className="quiz-search">
