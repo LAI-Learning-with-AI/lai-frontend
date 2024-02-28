@@ -4,11 +4,12 @@ import './chat.css'
 interface Props {
     title: string;
     description: string;
+    onClick: () => void;
 }
 
-const Chat: React.FC<Props> = ({ title, description } ) => {
+const Chat: React.FC<Props> = ({ title, description, onClick }) => {
     return (
-        <div className='chat'>
+        <div className='chat' onClick={onClick}>
             <div className='chat-summary'>
                 {title}
             </div>

@@ -18,12 +18,12 @@
 .chat-summary {
     font-weight: bold;
     font-size: 20px;
-    margin-left: 5px;
+    margin-left: 15px;
 }
 
 .chat-description {
     font-weight: normal;
     font-size: 14px;
     color: #DDDADA;
-    margin-left: 5px;
+    margin-left: 15px;
 }

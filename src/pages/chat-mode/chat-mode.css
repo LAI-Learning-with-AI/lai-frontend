@@ -1,13 +1,21 @@
+.chat-mode {
+    display: flex;
+    position: absolute;
+    left: 96px;
+    height: 100%;
+    top: 0;
+    width: 1816px;
+    color: white;
+    background-color: blue;
+}
+
 .chat-sidebar {
     display: flex;
     flex-direction: column;
-    width: 266px;
+    width: 300px;
     height: 100%;
     background-color: #18181B;
-    position: absolute;
-    left: 96px;
     border-right: 1px solid #555;
-    top: 0;
 }
 
 .chat-search {
@@ -15,7 +23,7 @@
     height: 144px;
     background-color: #18181B;
     border-bottom: 1px solid #555;
-    padding-left: 5px;
+    padding-left: 15px;
     padding-top: 20px;
     font-size: 32px;
     font-weight:bold;
@@ -23,7 +31,7 @@
 }
 
 .chat-recent {
-    margin-left: 5px;
+    margin-left: 15px;
     padding-top: 5px;
     height: 20px;
     font-size: 14px;
@@ -41,4 +49,21 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+}
+
+.chat-messages {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 40px;
+    align-items: center;
+    background-color: #3F3F46;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding-bottom: 300px;
+}
+
+.chat-messages::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar for webkit-based browsers */
 }
