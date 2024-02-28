@@ -10,16 +10,52 @@
     top: 0;
 }
 
-.quiz-search {
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     flex-shrink: 0;
-    height: 72px;
+    height: 100px;
     background-color: #18181B;
     border-bottom: 1px solid #555;
-    padding-left: 5px;
-    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     font-size: 32px;
     font-weight:bold;
     font-family:'Montserrat';
+}
+
+.quiz-header-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 50px;
+    font-size: 20px;
+}
+
+.quiz-header-buttons .create-quiz {
+    margin-right: auto;
+    background-color: #18A0FB;
+    height: 60px;
+    width: 280px;
+    font-size: 20px;
+    border-radius: 15px;
+    font-weight: bold;
+} 
+
+.quiz-header-buttons .icons {
+    display: flex;
+}
+
+.quiz-header-buttons .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0px;
+    background-color: #27272A;
+    height: 60px;
+    width: 60px;
+    border-radius: 15px;
 }
 
 .quiz-recent {

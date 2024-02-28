@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './quiz-mode.css';
 import Quiz from '../../components/modes/quiz.tsx'
-import { faCommentDots, faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCommentDots, faClipboardCheck, faGear, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import Modal from '../../components/modes/modal.tsx';
 
@@ -92,9 +92,19 @@ function ChatMode() {
                         </div>
                     </div>
                 </Modal>
-                <div className="quiz-search">
+                <div className="quiz-header">
                     Quiz
-                    <button onClick={toggleModal}>poop</button>
+                    <div className="quiz-header-buttons">
+                        <button className='create-quiz' onClick={toggleModal}>Create New Quiz</button>
+                        <div className='icons'>
+                            <button className='icon'>
+                                <FontAwesomeIcon icon={faGear} />
+                            </button>
+                            <button className='icon'>
+                                <FontAwesomeIcon icon={faRightFromBracket} />
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div className="quiz-recent">
                     <FontAwesomeIcon icon={faCommentDots} />

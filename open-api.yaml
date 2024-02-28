@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: Movie Booking API
+  description: API for buying movie tickets online.
+  version: 1.0.1
+servers:
+  - url: http://api.example.com/
+    description: Production server for movie ticket booking service.
+  - url: http://payment.example.com/
+	description: Payment processing service.
+paths:
+  /availableSeats/{showingId}:
+    get:
+      summary: Returns a list of available seats, e.g. 3f, 3c.
+	  parameters:
+		- name: showingId
+		  in: path
+		  required: true
+		  description: The ID of the showing to return available seats of.
+		  schema:
+			type: integer
+			format: int64
+			minimum: 1
+      responses:
+        '200': 
+          description: A JSON array of available seats.
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: integer
+		'404':
+			description: A showing with the specified ID was not found.
+  /confirmReservation/{reservationId}:
+    post:
+      summary: Confirm reservation for seats in showing.
+	  requestBody: 
+		required: true
+		content:
+			application/json:
+				schema:
+					type: object
+					properties:
+						userId:
+							type: id
+						seats:
+							type: arry
+							items:
+								type: integer
+	  parameters:
+		- name: showingId
+		  in: path
+		  required: true
+		  description: The ID of the showing to return available seats of.
+		  schema:
+			type: integer
+			format: int64
+			minimum: 1
+      responses:
+        '200': 
+          description: Created
+		'404':
+			description: A reservation with the specified ID was not found.
+		'400':
+			description: Invalid request body.
+		default:
+			description: Unexpected error.
+  /confirmReservation/{reservationId}:
+    delete:
+      summary: Cancel reservation for seats in showing.
+	  requestBody: 
+		required: true
+		content:
+			application/json:
+				schema:
+					type: object
+					properties:
+						userId:
+							type: id
+	  parameters:
+		- name: reservationId
+		  in: path
+		  required: true
+		  description: The ID of the reservation to cancel.
+		  schema:
+			type: integer
+			format: int64
+			minimum: 1
+      responses:
+        '200': 
+          description: Deleted
+		'404':
+			description: A showing with the specified ID was not found.
+		'400':
+			description: Reservation ID does not belong to user ID.
+		default:
+			description: Unexpected error.
+	
