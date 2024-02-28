@@ -1,0 +1,170 @@
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #00000080;
+}
+
+.modal-main {
+  position: absolute;
+  background: #1E1E1E;
+  width: 820px;
+  height: 760px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+  border-radius: 20px;
+  z-index: 2;
+}
+
+.modal.display-block {
+  display: block;
+}
+
+.modal.display-none {
+  display: none;
+}
+
+.modal-name-h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.modal-name-h2 {
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.modal-heading {
+  display: flex;
+  gap: 250px;
+}
+
+.modal-icon {
+  width: 100px;
+  height: 100px;
+}
+
+.modal-settings {
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  gap: 20px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+.modal-setting {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.modal-headers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+.modal-input {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 20px;
+  gap: 10px;
+}
+
+.modal-input textarea {
+  background-color: #27272A;
+  height: 100px;
+  resize: none;
+  border-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+  font-family: 'Montserrat';
+}
+
+.number-box {
+  height: 34px;
+}
+
+.number-box input {
+  width: 50px;
+}
+
+/* switch css from w3schools https://www.w3schools.com/howto/howto_css_switch.asp */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
