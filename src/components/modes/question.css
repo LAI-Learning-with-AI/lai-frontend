@@ -1,10 +1,9 @@
 .question-text {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     width: 1000px;
-    min-height: 80px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     padding-left: 60px;
     padding-right: 60px;
     background-color: #27272A;
@@ -13,7 +12,6 @@
     border-radius: 10px;
     font-weight: 500;
     font-size: 24px;
-    height: auto;
     word-break: break-all;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
 }
