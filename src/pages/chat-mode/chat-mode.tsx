@@ -2,9 +2,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './chat-mode.css';
 import Chat from '../../components/modes/chat.tsx'
 import Question from '../../components/modes/question.tsx';
-import { faCommentDots } from '@fortawesome/free-solid-svg-icons'
+import { faCommentDots, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState, useRef  } from 'react'
 import Response from '../../components/modes/response.tsx';
+import Textarea from 'react-expanding-textarea'
 
 interface ChatState {
     chats: string[];
@@ -14,6 +15,7 @@ interface ChatState {
 
 function ChatMode() {
     const [chats, setChats] = useState<ChatState[]>([]);
+    const [prompt, setPrompt] = useState<string>('');
     const [chat, setChat] = useState<ChatState | null>(null);
     const chatContainerRef = useRef<HTMLDivElement>(null);
 
@@ -21,10 +23,6 @@ function ChatMode() {
         if (chatContainerRef.current !== null)
             chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     };
-
-
-    // Call scrollToBottom when the component mounts or when new messages are added
-    // Ensure to add proper logic to trigger this function when new messages arrive
 
     useEffect(() => {
         fetch(`${import.meta.env.VITE_SERVER}/getChats`)
@@ -62,6 +60,14 @@ function ChatMode() {
                             <Response>{message}</Response>
                         )
                     ))
+                )}
+                {chat && (                
+                    <div className="chat-input">
+                        <Textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder="Enter prompt here..." />
+                        <button onClick={() => {scrollToBottom(); setPrompt('')}} className="chat-input-send">
+                            <FontAwesomeIcon icon={faArrowRight} />
+                        </button>
+                    </div>
                 )}
             </div>
         </div>

@@ -61,9 +61,53 @@
     background-color: #3F3F46;
     overflow-y: scroll;
     scroll-behavior: smooth;
-    padding-bottom: 300px;
+    padding-bottom: 150px;
 }
 
 .chat-messages::-webkit-scrollbar {
     display: none; /* Hide the scrollbar for webkit-based browsers */
+}
+
+.chat-input {
+    position: fixed;
+    bottom: 30px;
+    background-color: #27272A;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+    height: auto;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    width: 1200px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-input Textarea {
+    padding-top: 10px;
+    width: 1100px;
+    height: 24px;
+    border: none;
+    font-family: 'Montserrat';
+    background-color: #27272A;
+    font-size: 24px;
+    resize: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.chat-input-send {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #18A0FB; /* Change button background color */
+    color: #fff;
+    padding: 8px 16px;
+    height: 60px;
+    width: 60px;
+    border: none;
+    border-radius: 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    outline: none;
 }
