@@ -35,6 +35,10 @@ function ChatMode() {
             });
     }, []);
 
+    useEffect(() => {
+        scrollToBottom();
+    }, [chat?.chats])
+
     return (
         <div className="chat-mode">
             <div className="chat-sidebar">
@@ -64,7 +68,7 @@ function ChatMode() {
                 {chat && (                
                     <div className="chat-input">
                         <Textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder="Enter prompt here..." />
-                        <button onClick={() => {scrollToBottom(); setPrompt('')}} className="chat-input-send">
+                        <button onClick={() => {chat.chats.push(prompt); setPrompt('')}} className="chat-input-send">
                             <FontAwesomeIcon icon={faArrowRight} />
                         </button>
                     </div>

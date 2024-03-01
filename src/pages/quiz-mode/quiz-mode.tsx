@@ -3,6 +3,7 @@ import './quiz-mode.css';
 import Quiz from '../../components/modes/quiz.tsx'
 import { faCommentDots, faClipboardCheck, faGear, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Modal from '../../components/modes/modal.tsx';
 
 interface QuizState {
@@ -13,6 +14,7 @@ interface QuizState {
 }
 
 function ChatMode() {
+    const navigate = useNavigate();
     const [quizzes, setQuizzes] = useState<QuizState[]>([])
     const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -88,7 +90,7 @@ function ChatMode() {
                             <textarea placeholder='topic1, topic2, topic3, ...' />
                         </div>
                         <div className='modal-button'>
-                            <button className='submit' onClick={toggleModal}>Start Quiz</button>
+                            <button className='submit' onClick={() => { toggleModal(); navigate('/quiz/2'); }}>Start Quiz</button>
                         </div>
                     </div>
                 </Modal>
