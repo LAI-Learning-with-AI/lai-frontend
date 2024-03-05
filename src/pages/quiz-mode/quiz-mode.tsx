@@ -14,8 +14,8 @@ interface QuizState {
     date: string;
 }
 
-function ChatMode() {
-    const { isAuthenticated, user } = useAuth0();
+function QuizMode() {
+    const { isAuthenticated, user, logout } = useAuth0();
     const navigate = useNavigate();
     const [quizzes, setQuizzes] = useState<QuizState[]>([])
     const [showModal, setShowModal] = useState<boolean>(false);
@@ -110,7 +110,7 @@ function ChatMode() {
                             <button className='icon'>
                                 <FontAwesomeIcon icon={faGear} />
                             </button>
-                            <button className='icon'>
+                            <button className='icon' onClick={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}>
                                 <FontAwesomeIcon icon={faRightFromBracket} />
                             </button>
                         </div>
@@ -130,4 +130,4 @@ function ChatMode() {
     );
 }
 
-export default ChatMode;
+export default QuizMode;

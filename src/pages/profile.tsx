@@ -17,6 +17,8 @@ const Profile = () => {
         </div>
     )
 
+  console.log(user);
+
   return (
     isAuthenticated && user && (
       <div className='goleft'>
