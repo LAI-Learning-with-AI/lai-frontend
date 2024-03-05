@@ -1,0 +1,7 @@
+.goleft {
+    left: 96px;
+    width: 100%;
+    position: absolute;
+    color: white;
+    background-color: green;
+}

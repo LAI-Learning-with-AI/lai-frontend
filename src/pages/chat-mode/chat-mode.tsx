@@ -25,7 +25,7 @@ function ChatMode() {
     };
 
     useEffect(() => {
-        fetch(`${import.meta.env.SERVER}/getChats`)
+        fetch(`${import.meta.env.VITE_SERVER}/getChats`)
             .then(response => response.json())
             .then((res: ChatState[]) => {
                 setChats(res);

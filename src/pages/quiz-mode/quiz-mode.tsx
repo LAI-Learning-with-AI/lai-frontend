@@ -25,7 +25,7 @@ function ChatMode() {
     }
 
     useEffect(() => {
-        fetch(`${import.meta.env.SERVER}/getQuizzes`)
+        fetch(`${import.meta.env.VITE_SERVER}/getQuizzes`)
             .then(response => response.json())
             .then((res: QuizState[]) => {
                 setQuizzes(res);
