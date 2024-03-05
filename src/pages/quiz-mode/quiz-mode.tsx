@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './quiz-mode.css';
+import { useAuth0 } from "@auth0/auth0-react";
 import Quiz from '../../components/modes/quiz.tsx'
 import { faCommentDots, faClipboardCheck, faGear, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
@@ -14,6 +15,7 @@ interface QuizState {
 }
 
 function ChatMode() {
+    const { isAuthenticated, user } = useAuth0();
     const navigate = useNavigate();
     const [quizzes, setQuizzes] = useState<QuizState[]>([])
     const [showModal, setShowModal] = useState<boolean>(false);
@@ -23,7 +25,7 @@ function ChatMode() {
     }
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_SERVER}/getQuizzes`)
+        fetch(`${import.meta.env.SERVER}/getQuizzes`)
             .then(response => response.json())
             .then((res: QuizState[]) => {
                 setQuizzes(res);
@@ -32,6 +34,12 @@ function ChatMode() {
                 console.error(error);
             });
     }, []);
+
+    console.log(isAuthenticated);
+
+    if (!user || !isAuthenticated) {
+        return null;
+    }
 
     return (
         <div>
