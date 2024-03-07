@@ -140,6 +140,7 @@
 
 .questionf .choice {
     padding: 15px;
+    padding-bottom: 30px;
     background-color: #27272A;
     border: 1px solid #FFFFFF;
     height: 50px;
