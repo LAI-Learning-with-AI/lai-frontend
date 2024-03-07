@@ -5,6 +5,7 @@ import { faGear, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Textarea from 'react-expanding-textarea'
+import { useAuth0 } from '@auth0/auth0-react';
 
 interface QuizState {
     date: string;
@@ -12,26 +13,37 @@ interface QuizState {
 }
 
 interface Question {
-    answers: string[] | null;
+    choices: string | null;
     question: string;
     type: "TRUE_FALSE" | "MULTIPLE_CHOICE" | "SHORT_ANSWER" | "CODING";
 }
 
 function InQuiz() {
+    const { isAuthenticated, user, logout } = useAuth0();
     const navigate = useNavigate();
     const [quiz, setQuiz] = useState<QuizState>();
     let { id } = useParams<{ id: string }>();
 
     useEffect(() => {
-    fetch(`${import.meta.env.VITE_SERVER}/getQuiz/${id}`)
-        .then(response => response.json())
-        .then((res: QuizState) => {
-            setQuiz(res);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-    }, []);
+        if (user)
+            fetch(`${import.meta.env.VITE_SERVER}/quiz`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "userId": user?.sub,
+                    "quizId": id
+                })
+            })
+            .then(response => response.json())
+            .then((res: QuizState) => {
+                setQuiz(res);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, [user]);
 
     return (
         <div className='in-quiz'>
@@ -61,11 +73,11 @@ function InQuiz() {
                             </div>
                             <div className='question-answer'>
                                 <div className='question-label'>Your answer</div>
-                                {question.answers !== null ? (
+                                {question.choices !== null ? (
                                     <div className='multiple-choice'>
-                                        {question.answers.map((answer) => (
+                                        {question.choices.split(', ').map((choices) => (
                                             <div className='choice'>
-                                                {answer}
+                                                {choices}
                                             </div>
                                         ))}
                                     </div>

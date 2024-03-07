@@ -21,7 +21,7 @@ function Navbar() {
                         <span className="label">Learn</span>
                     </i>
                 </a>
-                <a href="/quiz">
+                <a href="/quizzes">
                     <i className="mode">
                         <FontAwesomeIcon icon={faFileCircleQuestion} className='icon' />  
                         <span className="label">Quiz</span>

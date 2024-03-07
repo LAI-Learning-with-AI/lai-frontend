@@ -2,18 +2,19 @@ import React from 'react';
 import './quiz.css'
 
 interface Props {
-    title: string;
-    tags: string;
+    name: string;
+    topics: string;
+    onClick: () => void;
 }
 
-const Quiz: React.FC<Props> = ({ title, tags } ) => {
+const Quiz: React.FC<Props> = ({ name, topics, onClick } ) => {
     return (
-        <div className='quiz'>
+        <div className='quiz' onClick={onClick}>
             <div className='quiz-title'>
-                {title}
+                {name}
             </div>
             <div className='quiz-tags'>
-                {tags}
+                {topics}
             </div>
         </div>
     )

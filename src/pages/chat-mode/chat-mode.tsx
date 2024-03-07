@@ -6,14 +6,17 @@ import { faCommentDots, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState, useRef  } from 'react'
 import Response from '../../components/modes/response.tsx';
 import Textarea from 'react-expanding-textarea'
+import { useAuth0 } from '@auth0/auth0-react';
 
 interface ChatState {
     chats: string[];
     description: string;
     title: string;
+    chat_id: number;
 }
 
 function ChatMode() {
+    const { isAuthenticated, user } = useAuth0();
     const [chats, setChats] = useState<ChatState[]>([]);
     const [prompt, setPrompt] = useState<string>('');
     const [chat, setChat] = useState<ChatState | null>(null);
@@ -24,16 +27,75 @@ function ChatMode() {
             chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     };
 
-    useEffect(() => {
-        fetch(`${import.meta.env.VITE_SERVER}/getChats`)
-            .then(response => response.json())
-            .then((res: ChatState[]) => {
-                setChats(res);
+    const createChat = () => {
+        fetch(`${import.meta.env.VITE_SERVER}/createChat`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "userId": user?.sub,
+                "name": "Untitled Chat"
             })
-            .catch(error => {
-                console.error(error);
-            });
-    }, []);
+        })
+        .then(() => {
+            getChats();
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
+
+    const getResponse = (prompt: string) => {
+        fetch(`${import.meta.env.VITE_SERVER}/generateResponse`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "userId": user?.sub,
+                "chatId": chat?.chat_id,
+                "message": prompt,
+                "context": {
+                    "previous": chat?.chats,
+                    "userData": {}
+                }
+            })
+        })
+        .then(response => response.json())
+        .then(res => {
+            chat?.chats.push(prompt)
+            chat?.chats.push(res.response)
+            setPrompt('');
+            scrollToBottom();
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
+
+    const getChats = () => {
+        fetch(`${import.meta.env.VITE_SERVER}/chats`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "userId": user?.sub
+            })
+        })
+        .then(response => response.json())
+        .then((res: ChatState[]) => {
+            setChats(res);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
+
+    useEffect(() => {
+        getChats();
+    }, [user]);
 
     useEffect(() => {
         scrollToBottom();
@@ -44,6 +106,7 @@ function ChatMode() {
             <div className="chat-sidebar">
                 <div className="chat-search">
                     Chats
+                    <button onClick={() => {createChat()}}className='create-chat-button'>New Chat</button>
                 </div>
                 <div className="chat-recent">
                     <FontAwesomeIcon icon={faCommentDots} />
@@ -68,7 +131,7 @@ function ChatMode() {
                 {chat && (                
                     <div className="chat-input">
                         <Textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder="Enter prompt here..." />
-                        <button onClick={() => {chat.chats.push(prompt); setPrompt('')}} className="chat-input-send">
+                        <button onClick={() => {getResponse(prompt)}} className="chat-input-send">
                             <FontAwesomeIcon icon={faArrowRight} />
                         </button>
                     </div>

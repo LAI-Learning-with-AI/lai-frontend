@@ -16,8 +16,8 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/' element={<ChatMode />} />
-        <Route path='/quiz' element={<QuizMode />} />
-        <Route path='/quiz/:id' element ={<InQuiz />} />
+        <Route path='/quizzes' element={<QuizMode />} />
+        <Route path='/quiz/:id' element={<InQuiz />} />
       </Routes>
     </Router>
   )

@@ -8,34 +8,73 @@ import { useNavigate } from 'react-router-dom';
 import Modal from '../../components/modes/modal.tsx';
 
 interface QuizState {
-    title: string;
-    tags: string;
+    id: number,
+    name: string;
+    topics: string;
     score: string;
-    date: string;
+    created_at: string;
 }
 
 function QuizMode() {
     const { isAuthenticated, user, logout } = useAuth0();
     const navigate = useNavigate();
-    const [quizzes, setQuizzes] = useState<QuizState[]>([])
+    const [quizzes, setQuizzes] = useState<QuizState[]>([]);
+    const [topics, setTopics] = useState<string>('');
     const [showModal, setShowModal] = useState<boolean>(false);
+    const [number, setNumber] = useState<number>(20);
+    const [selectedSettings, setSelectedSettings] = useState<string[]>([]);
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>, setting: string) => {
+        const isChecked = event.target.checked;
+        if (isChecked) setSelectedSettings(prevSettings => [...prevSettings, setting]);
+        else setSelectedSettings(prevSettings => prevSettings.filter(item => item !== setting));
+    };
+
+    const createQuiz = () => {
+        fetch(`${import.meta.env.VITE_SERVER}/generatequiz`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "userId": user?.sub,
+                "name": `Quiz ${quizzes.length+1}`,
+                "numberOfQuestions": number,
+                "types": selectedSettings.join(', '),
+                "topics": topics
+            })
+        })
+        .then(response => response.json())
+        .then((res) => {
+            navigate(`/quiz/${res.quiz_id}`)
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
 
     function toggleModal() {
         setShowModal(!showModal);
     }
 
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_SERVER}/getQuizzes`)
-            .then(response => response.json())
-            .then((res: QuizState[]) => {
-                setQuizzes(res);
+        fetch(`${import.meta.env.VITE_SERVER}/quizzes`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "userId": user?.sub
             })
-            .catch(error => {
-                console.error(error);
-            });
-    }, []);
-
-    console.log(isAuthenticated);
+        })
+        .then(response => response.json())
+        .then((res: QuizState[]) => {
+            setQuizzes(res);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }, [user]);
 
     if (!user || !isAuthenticated) {
         return null;
@@ -61,51 +100,51 @@ function QuizMode() {
                             <div className='modal-setting'>
                                 Questions
                                 <label className="number-box">
-                                    <input type='number' defaultValue='20' min='0' max='50' />
+                                    <input type='number' onChange={(e) => setNumber(parseInt(e.target.value))} defaultValue='20' min='0' max='50' />
                                 </label>
                             </div>
                             <div className='modal-setting'>
                                 True/False
                                 <label className="switch">
-                                    <input type="checkbox" />
+                                    <input type="checkbox" onChange={(e) => handleChange(e, 'True/False')} />
                                     <span className="slider round" />
                                 </label>
                             </div>
                             <div className='modal-setting'>
                                 Multiple Choice
                                 <label className="switch">
-                                    <input type="checkbox" />
+                                    <input type="checkbox" onChange={(e) => handleChange(e, 'Multiple Choice')} />
                                     <span className="slider round" />
                                 </label>
                             </div>
                             <div className='modal-setting'>
                                 Short Answer
                                 <label className="switch">
-                                    <input type="checkbox" />
+                                    <input type="checkbox" onChange={(e) => handleChange(e, 'Short Answer')} />
                                     <span className="slider round" />
                                 </label>
                             </div>
                             <div className='modal-setting'>
                                 Coding
                                 <label className="switch">
-                                    <input type="checkbox" />
+                                    <input type="checkbox" onChange={(e) => handleChange(e, 'Coding')} />
                                     <span className="slider round" />
                                 </label>
                             </div>
                         </div>
                         <div className='modal-input'>
                             Quiz Topics
-                            <textarea placeholder='topic1, topic2, topic3, ...' />
+                            <textarea value={topics} onChange={(e) => setTopics(e.target.value)} placeholder='topic1, topic2, topic3, ...' />
                         </div>
                         <div className='modal-button'>
-                            <button className='submit' onClick={() => { toggleModal(); navigate('/quiz/2'); }}>Start Quiz</button>
+                            <button className='submit' onClick={() => { toggleModal(); createQuiz(); }}>Start Quiz</button>
                         </div>
                     </div>
                 </Modal>
                 <div className="quiz-header">
                     Quiz
                     <div className="quiz-header-buttons">
-                        <button className='create-quiz' onClick={toggleModal}>Create New Quiz</button>
+                        <button className='create-quiz' onClick={() => {toggleModal(); console.log(selectedSettings); console.log(topics); console.log(number)}}>Create New Quiz</button>
                         <div className='icons'>
                             <button className='icon'>
                                 <FontAwesomeIcon icon={faGear} />
@@ -122,7 +161,7 @@ function QuizMode() {
                 </div>
                 <div className="quizzes">
                     {quizzes.map((quiz) => (
-                        <Quiz title={quiz.title} tags={quiz.tags} />
+                        <Quiz name={quiz.name} topics={quiz.topics} onClick={() => navigate(`/quiz/${quiz.id}`)} />
                     ))}
                 </div>
             </div>

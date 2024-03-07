@@ -19,8 +19,10 @@
 }
 
 .chat-search {
+    display: flex;
     flex-shrink: 0;
     height: 144px;
+    justify-content: space-between;
     background-color: #18181B;
     border-bottom: 1px solid #555;
     padding-left: 15px;
@@ -28,6 +30,17 @@
     font-size: 32px;
     font-weight:bold;
     font-family:'Montserrat';
+}
+
+.create-chat-button {
+    background-color: #18A0FB;
+    height: 50px;
+    font-size: 20px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    padding: 10px;
+    margin-right: 20px;
+    border-radius: 20px;
 }
 
 .chat-recent {
@@ -86,11 +99,11 @@
 .chat-input Textarea {
     padding-top: 10px;
     width: 1100px;
-    height: 24px;
+    height: 14px;
     border: none;
     font-family: 'Montserrat';
     background-color: #27272A;
-    font-size: 24px;
+    font-size: 20px;
     resize: none;
     border-radius: 5px;
     outline: none;
@@ -103,8 +116,8 @@
     background-color: #18A0FB; /* Change button background color */
     color: #fff;
     padding: 8px 16px;
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     border: none;
     border-radius: 15px;
     margin-left: 10px;
