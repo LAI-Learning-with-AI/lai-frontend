@@ -6,6 +6,7 @@ import { faCommentDots, faClipboardCheck, faGear, faRightFromBracket } from '@fo
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Modal from '../../components/modes/modal.tsx';
+import Loading from '../../components/modes/loading.tsx';
 
 interface QuizState {
     id: number,
@@ -21,6 +22,7 @@ function QuizMode() {
     const [quizzes, setQuizzes] = useState<QuizState[]>([]);
     const [topics, setTopics] = useState<string>('');
     const [showModal, setShowModal] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false);
     const [number, setNumber] = useState<number>(20);
     const [selectedSettings, setSelectedSettings] = useState<string[]>([]);
 
@@ -31,6 +33,7 @@ function QuizMode() {
     };
 
     const createQuiz = () => {
+        toggleLoading();
         fetch(`${import.meta.env.VITE_SERVER}/generatequiz`, {
             method: 'POST',
             headers: {
@@ -46,6 +49,7 @@ function QuizMode() {
         })
         .then(response => response.json())
         .then((res) => {
+            toggleLoading();
             navigate(`/quiz/${res.quiz_id}`)
         })
         .catch(error => {
@@ -55,6 +59,10 @@ function QuizMode() {
 
     function toggleModal() {
         setShowModal(!showModal);
+    }
+
+    const toggleLoading = () => {
+        setLoading(!loading);
     }
 
     useEffect(() => {
@@ -83,6 +91,7 @@ function QuizMode() {
     return (
         <div>
             <div className="quiz-sidebar">
+                <Loading open={loading} />
                 <Modal open={showModal} close={toggleModal}>
                     <div className='modal-content'>
                         <div className='modal-heading'>

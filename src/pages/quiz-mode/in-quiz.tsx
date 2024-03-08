@@ -66,7 +66,7 @@ function InQuiz() {
                         <div className='questione'>
                             <div className='info'>
                                 <div>{question.type.toLowerCase()}</div>
-                                <div>{index} of {quiz?.questions.length}</div>
+                                <div>{index+1} of {quiz?.questions.length}</div>
                             </div>
                             <div className='question-textee'>
                                 {question.question}
