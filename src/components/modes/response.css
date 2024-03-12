@@ -1,7 +1,7 @@
 .response {
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    width: 35%;
     padding-top: 30px;
     padding-bottom: 10px;
     padding-left: 60px;
@@ -22,7 +22,6 @@
     justify-content: space-between;
     bottom: 0px;
     left: 60px;
-    width: 1020px;
 }
 
 .response-buttons .left {
