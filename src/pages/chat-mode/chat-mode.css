@@ -113,7 +113,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #18A0FB; /* Change button background color */
     color: #fff;
     padding: 8px 16px;
     height: 50px;
@@ -121,6 +120,31 @@
     border: none;
     border-radius: 15px;
     margin-left: 10px;
-    cursor: pointer;
     outline: none;
+}
+
+.textarea.display-block {
+    display: block;
+}
+  
+.textarea.display-none {
+    display: none;
+}
+
+.img.display-block {
+    display: block;
+}
+  
+.img.display-none {
+    display: none;
+}
+
+.chat-input-send.enabled {
+    background-color: #18A0FB;
+    cursor: pointer;
+}
+
+.chat-input-send.disabled {
+    background-color: #3F3F46;
+    cursor: not-allowed;
 }
