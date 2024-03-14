@@ -2,12 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './chat-mode.css';
 import Chat from '../../components/modes/chat.tsx'
 import Question from '../../components/modes/question.tsx';
-import { faCommentDots, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faCommentDots, faArrowRight, faGear, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState, useRef  } from 'react'
 import Response from '../../components/modes/response.tsx';
 import Textarea from 'react-expanding-textarea'
 import spinner from '../../assets/chat-loading.svg'
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 
 // interface for chat objects
 interface ChatState {
@@ -19,12 +19,15 @@ interface ChatState {
 
 function ChatMode() {
     // vars
-    const { isAuthenticated, user } = useAuth0();
+    const { isAuthenticated, user, logout, loginWithRedirect } = useAuth0();
     const [chats, setChats] = useState<ChatState[]>([]);
     const [waiting, setWaiting] = useState<boolean>(false);
     const [prompt, setPrompt] = useState<string>('');
     const [chat, setChat] = useState<ChatState | null>(null);
     const chatContainerRef = useRef<HTMLDivElement>(null);
+
+    if(!isAuthenticated)
+        loginWithRedirect()
 
     // function to scroll to bottom.
     const scrollToBottom = () => {
@@ -140,11 +143,24 @@ function ChatMode() {
                 </div>
                 <div className="chats">
                     {chats.map((chat) => (
-                        <Chat title={chat.title} description={chat.description} onClick={() => setChat(chat)} />
+                        <Chat title={chat.chats[0] ? chat.chats[0] : chat.title} description={chat.chats[chat.chats.length -1] ? chat.chats[chat.chats.length -1] : chat.description} onClick={() => setChat(chat)} />
                     ))}
                 </div>
             </div>
             <div className="chat-messages" ref={chatContainerRef}>
+                <div className="chat-header">
+                    {chat?.chats[0] ? chat?.chats[0] : chat?.title }
+                    <div className="chat-header-buttons">
+                        <div className='icons'>
+                            <button className='icon'>
+                                <FontAwesomeIcon icon={faGear} />
+                            </button>
+                            <button className='icon' onClick={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}>
+                                <FontAwesomeIcon icon={faRightFromBracket} />
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 {chat && (
                     chat.chats.map((message, index) => (
                         index % 2 === 0 ? (
@@ -171,4 +187,4 @@ function ChatMode() {
     );
 }
 
-export default ChatMode;
+export default withAuthenticationRequired(ChatMode);

@@ -1,9 +1,9 @@
 nav {
+    position: fixed;
     display: flex;
     flex-direction: column;
     background-color: #18181B;
     width: 96px;
-    position: fixed;
     left: 0;
     top: 0;
     height: 100%;

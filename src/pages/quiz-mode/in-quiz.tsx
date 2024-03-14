@@ -19,10 +19,13 @@ interface Question {
 }
 
 function InQuiz() {
-    const { isAuthenticated, user, logout } = useAuth0();
+    const { isAuthenticated, user, logout, loginWithRedirect } = useAuth0();
     const navigate = useNavigate();
     const [quiz, setQuiz] = useState<QuizState>();
     let { id } = useParams<{ id: string }>();
+
+    if(!isAuthenticated)
+        loginWithRedirect()
 
     useEffect(() => {
         if (user)

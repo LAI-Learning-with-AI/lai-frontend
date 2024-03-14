@@ -1,7 +1,5 @@
 .chat-mode {
     display: flex;
-    position: absolute;
-    left: 96px;
     height: 100%;
     top: 0;
     width: 100%;
@@ -66,7 +64,6 @@
 }
 
 .chat-messages {
-    padding-top: 50px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -147,4 +144,40 @@
 .chat-input-send.disabled {
     background-color: #3F3F46;
     cursor: not-allowed;
+}
+
+.chat-header {
+    display: flex;
+    left: 0;
+    top: 0;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    width: 100%;
+    background-color: #18181B;
+    border-bottom: 1px solid #555;
+    font-size: 24px; /* Adjust font size if needed */
+    font-weight: bold;
+    font-family: 'Montserrat';
+}
+
+
+.chat-header-buttons {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.chat-header-buttons .icons {
+    display: flex;
+}
+
+.chat-header-buttons .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #27272A;
+    height: 60px;
+    width: 60px;
+    border-radius: 15px;
 }

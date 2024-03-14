@@ -1,0 +1,13 @@
+.app-container {
+    display: flex;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.navbar-spacer {
+    width: 100px;
+    flex-shrink: 0;
+}
