@@ -11,6 +11,19 @@
     font-style: normal;
 }
 
+.chat-heading {
+    display: flex;
+}
+
+.chat-date {
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-size: 10px;
+    font-style: normal;
+}
+
 .chat:hover {
     background-color: #18A0FB;
 }
@@ -18,14 +31,14 @@
 .chat-summary {
     font-weight: bold;
     font-size: 20px;
-    margin-left: 15px;
+    margin-left: 5px;
 }
 
 .chat-description {
     font-weight: normal;
     font-size: 14px;
     color: #DDDADA;
-    margin-left: 15px;
+    margin-left: 5px;
     margin-right: 15px;
     overflow: hidden;
     max-height: 20px;
