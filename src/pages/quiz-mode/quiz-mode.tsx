@@ -18,7 +18,7 @@ interface QuizState {
 
 function QuizMode() {
     // vars
-    const { isAuthenticated, user, logout, loginWithRedirect } = useAuth0();
+    const { user, logout } = useAuth0();
     const navigate = useNavigate();
     const [quizzes, setQuizzes] = useState<QuizState[]>([]);
     const [topics, setTopics] = useState<string>('');

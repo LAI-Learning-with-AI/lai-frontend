@@ -19,7 +19,7 @@ interface Question {
 }
 
 function InQuiz() {
-    const { isAuthenticated, user } = useAuth0();
+    const { user } = useAuth0();
     const navigate = useNavigate();
     const [quiz, setQuiz] = useState<QuizState>();
     let { id } = useParams<{ id: string }>();
