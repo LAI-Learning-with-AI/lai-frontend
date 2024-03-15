@@ -1,38 +1,84 @@
 .signup-container {
+    display: flex;
     position: absolute;
-    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../../assets/lai-background.png');
-    background: #00000080;
+    background: #000000;
+    z-index: 999;
+}
+
+.signup-image {
+    width: 50%;
 }
   
 .signup-main {
-    position: absolute;
     background: #1E1E1E;
     width: 50%;
-    height: 75%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    height: 100%;
     display: flex;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: normal;
     flex-direction: column;
     align-items: center;
-    border-radius: 20px;
+}
+
+.two-column {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    height: 30%;
+}
+
+.two-column input {
+    background-color: #27272A;
+    border: 0;
+    border-radius: 50px;
+    color: #FFFFFF;
+    width: 48%;
+    height: 100%;
+    font-size: 30px;
+    font-family: 'Montserrat';
+    text-align: center;
 }
 
 .signup-header {
     display: flex;
-    align-items: center;
     justify-content: center;
     font-weight: bold;
     font-size: 50px;
     width: 100%;
-    flex-grow: 1;
+    height: 33%;
+}
+
+.redirect-container {
+    display: flex;
+    width: 90%;
+    height: 20%;
+    align-self: flex-end;
+}
+
+.signup-redirect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border-radius: 0;
+    width: 25%;
+    padding: 0;
+}
+
+.signup-redirect.enabled {
+    color: #18A0FB;
+    font-weight: bold;
+    cursor: not-allowed;
+    border-bottom: 5px solid #18A0FB;
+}
+
+.signup-redirect.disabled {
+    color: #AEAEAE;
+    font-weight: bold;
 }
 
 .signup-middle {
@@ -45,13 +91,13 @@
     flex-grow: 1;
 }
 
-.signup-middle input {
+.signup-middle .student-input {
     background-color: #27272A;
     border: 0;
-    border-radius: 20px;
+    border-radius: 50px;
     color: #FFFFFF;
     width: 90%;
-    height: 50%;
+    height: 30%;
     font-size: 30px;
     font-family: 'Montserrat';
     text-align: center;
@@ -69,10 +115,19 @@
     flex-grow: 1;
 }
 
-.signup-container button {
+.signup-middle button {
     width: 90%;
-    height: 40%;
+    height: 50%;
     font-size: 30px;
     background-color: #18A0FB;
-    border-radius: 20px;
+    border-radius: 50px;
+}
+
+.signup-footer button {
+    width: 90%;
+    height: 30%;
+    font-size: 30px;
+    background-color: #18A0FB;
+    border-radius: 50px;
+    align-self: flex-start;
 }
