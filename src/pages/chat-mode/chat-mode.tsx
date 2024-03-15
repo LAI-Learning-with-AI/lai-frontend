@@ -20,7 +20,7 @@ interface ChatState {
 
 function ChatMode() {
     // vars
-    const { isAuthenticated, user, logout, loginWithRedirect } = useAuth0();
+    const { user, logout } = useAuth0();
     const [chats, setChats] = useState<ChatState[]>([]);
     const [waiting, setWaiting] = useState<boolean>(false);
     const [prompt, setPrompt] = useState<string>('');

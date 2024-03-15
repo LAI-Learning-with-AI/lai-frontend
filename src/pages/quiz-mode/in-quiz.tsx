@@ -5,7 +5,7 @@ import { faGear, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Textarea from 'react-expanding-textarea'
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 
 interface QuizState {
     date: string;
@@ -19,13 +19,10 @@ interface Question {
 }
 
 function InQuiz() {
-    const { isAuthenticated, user, logout, loginWithRedirect } = useAuth0();
+    const { isAuthenticated, user } = useAuth0();
     const navigate = useNavigate();
     const [quiz, setQuiz] = useState<QuizState>();
     let { id } = useParams<{ id: string }>();
-
-    if(!isAuthenticated)
-        loginWithRedirect()
 
     useEffect(() => {
         if (user)
@@ -102,4 +99,4 @@ function InQuiz() {
     );
 }
 
-export default InQuiz;
+export default withAuthenticationRequired(InQuiz);
