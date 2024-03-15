@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './quiz-mode.css';
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import Quiz from '../../components/modes/quiz.tsx'
 import { faCommentDots, faClipboardCheck, faGear, faRightFromBracket, faChevronUp, faChevronDown, faRefresh } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
@@ -115,7 +115,7 @@ function QuizMode() {
     }, [user]);
 
     return (
-        <div>
+        <div className='quiz-mode'>
             <div className="quiz-sidebar">
                 <Loading open={loading} />
                 <Modal open={showModal} close={toggleModal}>
@@ -229,4 +229,4 @@ function QuizMode() {
     );
 }
 
-export default QuizMode;
+export default withAuthenticationRequired(QuizMode);

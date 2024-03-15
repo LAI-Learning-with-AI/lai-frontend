@@ -27,9 +27,6 @@ function ChatMode() {
     const [chat, setChat] = useState<ChatState | null>(null);
     const chatContainerRef = useRef<HTMLDivElement>(null);
 
-    if(!isAuthenticated)
-        loginWithRedirect()
-
     // function to scroll to bottom.
     const scrollToBottom = () => {
         if (chatContainerRef.current !== null)

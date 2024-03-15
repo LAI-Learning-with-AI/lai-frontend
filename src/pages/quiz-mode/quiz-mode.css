@@ -1,13 +1,15 @@
+.quiz-mode {
+    flex-grow: 1;
+}
+
 .quiz-sidebar {
     display: flex;
     flex-direction: column;
-    width: 1816px;
+    width: 100%;
     height: 100%;
     background-color: #27272A;
-    position: absolute;
     left: 96px;
     border-right: 1px solid #555;
-    top: 0;
 }
 
 .quiz-header {
