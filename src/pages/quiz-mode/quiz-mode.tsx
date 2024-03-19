@@ -211,18 +211,16 @@ function QuizMode() {
                         ))}
                     </div>
                 </div>
-                <div className='quiz-container'>
-                    <div className="quiz-label-container">
-                        <div className="quiz-label">
-                            <FontAwesomeIcon icon={faCommentDots} />
-                            <span className='quiz-label'>RECENTS</span>
-                        </div>
+                <div className="quiz-label-container">
+                    <div className="quiz-label">
+                        <FontAwesomeIcon icon={faCommentDots} />
+                        <span className='quiz-label'>RECENTS</span>
                     </div>
-                    <div className="quizzes">
-                        {quizzes.map((quiz) => (
-                            <Quiz name={quiz.name} topics={quiz.topics} onClick={() => navigate(`/quiz/${quiz.id}`)} />
-                        ))}
-                    </div>
+                </div>
+                <div className="quizzes">
+                    {quizzes.map((quiz) => (
+                        <Quiz name={quiz.name} topics={quiz.topics} onClick={() => navigate(`/quiz/${quiz.id}`)} />
+                    ))}
                 </div>
             </div>
         </div>
