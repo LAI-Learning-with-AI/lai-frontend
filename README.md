@@ -7,6 +7,7 @@ git clone https://github.com/LAI-Learning-with-AI/lai-frontend
 ```
 Then install dependencies with:
 ```sh
+npm install --global yarn
 cd lai-frontend
 yarn install
 ```
