@@ -7,6 +7,7 @@ import SignUp from './pages/signup/signup.tsx'
 import Profile from './pages/profile.tsx'
 import './App.css'
 import Login from './pages/signup/login.tsx'
+import LearnMode from './pages/learn-mode/learn-mode.tsx'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path='/signup' element={<SignUp />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/learn' element={<LearnMode />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/' element={<ChatMode />} />
             <Route path='/quizzes' element={<QuizMode />} />
