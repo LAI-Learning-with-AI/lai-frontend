@@ -84,7 +84,7 @@ function InQuiz() {
                                 <div className='question-label'>Your answer</div>
                                 {question.choices !== null ? (
                                     <div className='multiple-choice'>
-                                        {question.choices.split(', ').map((choice, choiceIndex) => (
+                                        {question.choices.split('@').map((choice, choiceIndex) => (
                                             <div key={choiceIndex} className={`choice ${selectedChoices[index] === choiceIndex ? 'selected' : ''}`} onClick={() => handleChoiceClick(index, choiceIndex)}>
                                                 {choice}
                                             </div>
