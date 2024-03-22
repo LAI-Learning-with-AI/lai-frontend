@@ -140,34 +140,34 @@ function ChatMode() {
                     <text className='chat-recent-label'>RECENTS</text>
                 </div>
                 <div className="chats">
-                {chats.map((chat) => {
-                    // get date difference
-                    const creation = new Date(chat.created_at);
-                    const current = new Date();
-                    const difference = current.getTime() - creation.getTime();
-                    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                    {chats.slice().reverse().map((chat) => {
+                        // get date difference
+                        const creation = new Date(chat.created_at);
+                        const current = new Date();
+                        const difference = current.getTime() - creation.getTime();
+                        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
 
-                    // format
-                    let date = '';
-                    if (days > 0)
-                        date += days + 'd';
-                    else if(hours > 0)
-                        date += hours + 'h';
-                    else if (minutes > 0 || date === '')
-                        date += minutes + 'm';
+                        // format
+                        let date = '';
+                        if (days > 0)
+                            date += days + 'd';
+                        else if(hours > 0)
+                            date += hours + 'h';
+                        else if (minutes > 0 || date === '')
+                            date += minutes + 'm';
 
-                    // return chat object
-                    return (
-                        <Chat
-                            title={chat.chats[0] ? chat.chats[0] : chat.title}
-                            description={chat.chats[chat.chats.length - 1] ? chat.chats[chat.chats.length - 1] : chat.description}
-                            date={date}
-                            onClick={() => setChat(chat)}
-                        />
-                    );
-                })}
+                        // return chat object
+                        return (
+                            <Chat
+                                title={chat.chats[0] ? chat.chats[0] : chat.title}
+                                description={chat.chats[chat.chats.length - 1] ? chat.chats[chat.chats.length - 1] : chat.description}
+                                date={date}
+                                onClick={() => setChat(chat)}
+                            />
+                        );
+                    })}
                 </div>
             </div>
             <div className="chat-messages" ref={chatContainerRef}>

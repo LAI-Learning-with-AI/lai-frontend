@@ -141,28 +141,28 @@ function QuizMode() {
                             <div className='modal-setting'>
                                 True/False
                                 <label className="switch">
-                                    <input type="checkbox" onChange={(e) => handleChange(e, 'True/False')} />
+                                    <input type="checkbox" onChange={(e) => handleChange(e, 'TRUE_FALSE')} />
                                     <span className="slider round" />
                                 </label>
                             </div>
                             <div className='modal-setting'>
                                 Multiple Choice
                                 <label className="switch">
-                                    <input type="checkbox" onChange={(e) => handleChange(e, 'Multiple Choice')} />
+                                    <input type="checkbox" onChange={(e) => handleChange(e, 'MULTIPLE_CHOICE')} />
                                     <span className="slider round" />
                                 </label>
                             </div>
                             <div className='modal-setting'>
                                 Short Answer
                                 <label className="switch">
-                                    <input type="checkbox" onChange={(e) => handleChange(e, 'Short Answer')} />
+                                    <input type="checkbox" onChange={(e) => handleChange(e, 'SHORT_ANSWER')} />
                                     <span className="slider round" />
                                 </label>
                             </div>
                             <div className='modal-setting'>
                                 Coding
                                 <label className="switch">
-                                    <input type="checkbox" onChange={(e) => handleChange(e, 'Coding')} />
+                                    <input type="checkbox" onChange={(e) => handleChange(e, 'CODING')} />
                                     <span className="slider round" />
                                 </label>
                             </div>
