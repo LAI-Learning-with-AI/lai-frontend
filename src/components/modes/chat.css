@@ -32,6 +32,9 @@
     font-weight: bold;
     font-size: 20px;
     margin-left: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .chat-description {
