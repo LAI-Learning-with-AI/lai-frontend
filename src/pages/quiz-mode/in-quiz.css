@@ -148,6 +148,10 @@
     border-radius: 20px;
 }
 
+.questionf .choice.selected {
+    background-color: #18A0FB;
+}
+
 .questionf .choice:hover {
     background-color: #18A0FB;
     cursor: pointer;

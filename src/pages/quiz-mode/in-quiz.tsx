@@ -23,6 +23,13 @@ function InQuiz() {
     const navigate = useNavigate();
     const [quiz, setQuiz] = useState<QuizState>();
     let { id } = useParams<{ id: string }>();
+    const [selectedChoices, setSelectedChoices] = useState<(number | null)[]>(Array(quiz?.questions.length).fill(null));
+
+    const handleChoiceClick = (questionIndex: number, choiceIndex: number) => {
+        const newSelectedChoices = [...selectedChoices];
+        newSelectedChoices[questionIndex] = choiceIndex === selectedChoices[questionIndex] ? null : choiceIndex;
+        setSelectedChoices(newSelectedChoices);
+    };
 
     useEffect(() => {
         if (user)
@@ -44,6 +51,8 @@ function InQuiz() {
                 console.error(error);
             });
     }, [user]);
+
+    
 
     return (
         <div className='in-quiz'>
@@ -75,9 +84,9 @@ function InQuiz() {
                                 <div className='question-label'>Your answer</div>
                                 {question.choices !== null ? (
                                     <div className='multiple-choice'>
-                                        {question.choices.split(', ').map((choices) => (
-                                            <div className='choice'>
-                                                {choices}
+                                        {question.choices.split(', ').map((choice, choiceIndex) => (
+                                            <div key={choiceIndex} className={`choice ${selectedChoices[index] === choiceIndex ? 'selected' : ''}`} onClick={() => handleChoiceClick(index, choiceIndex)}>
+                                                {choice}
                                             </div>
                                         ))}
                                     </div>
@@ -92,7 +101,7 @@ function InQuiz() {
                 )}
                 </div>
             <div className="in-quiz-footer">
-                <div className='text'>0 of {quiz?.questions.length} answered</div>
+                <div className='text'>{selectedChoices.filter(choice => choice !== null).length} of {quiz?.questions.length} answered</div>
                 <button className='submit-quiz' onClick={() => navigate('/quiz')}>Submit</button>
             </div>
         </div>
