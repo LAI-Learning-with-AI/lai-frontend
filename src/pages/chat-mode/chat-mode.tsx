@@ -59,6 +59,7 @@ function ChatMode() {
     */
     const getResponse = (prompt: string) => {
         setWaiting(true);
+        chat?.chats.push(prompt)
         fetch(`${import.meta.env.VITE_SERVER}/generateResponse`, {
             method: 'POST',
             headers: {
@@ -77,7 +78,6 @@ function ChatMode() {
         .then(response => response.json())
         .then(res => {
             setWaiting(false);
-            chat?.chats.push(prompt)
             chat?.chats.push(res.response)
             setPrompt('');
         })

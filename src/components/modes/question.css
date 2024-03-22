@@ -1,7 +1,7 @@
 .question-text {
     display: flex;
     flex-direction: column;
-    width: 35%;
+    width: 50%;
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 60px;
