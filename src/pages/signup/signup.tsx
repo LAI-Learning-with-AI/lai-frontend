@@ -46,7 +46,7 @@ function SignUp() {
                 <div className="signup-middle">
                     <div className="two-column">
                         <input placeholder="First Name" onChange={(e) => setFirst(e.target.value)} />
-                        <input placeholder="Last Name" onChange={(e) => setLast(e.target.value)} / >
+                        <input placeholder="Last Name" onChange={(e) => setLast(e.target.value)} />
                     </div>
                     <input className='student-input' placeholder="Student ID" onChange={(e) => setStudentId(e.target.value)}></input>
                 </div>
