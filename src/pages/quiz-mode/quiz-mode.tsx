@@ -2,11 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './quiz-mode.css';
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import Quiz from '../../components/modes/quiz.tsx'
-import { faCommentDots, faClipboardCheck, faGear, faRightFromBracket, faChevronUp, faChevronDown, faRefresh } from '@fortawesome/free-solid-svg-icons'
+import { faCommentDots, faClipboardCheck, faGear, faRightFromBracket, faChevronUp, faChevronDown, faRefresh, faDownload } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Modal from '../../components/modes/modal.tsx';
 import Loading from '../../components/modes/loading.tsx';
+import Import from '../../components/modes/import.tsx';
 
 interface QuizState {
     id: number,
@@ -24,6 +25,7 @@ function QuizMode() {
     const [topics, setTopics] = useState<string>('');
     const [showModal, setShowModal] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
+    const [showImport, setShowImport] = useState<boolean>(false);
     const [recommended, setRecommended] = useState<boolean>(false);
     const [number, setNumber] = useState<number>(20);
     const [selectedSettings, setSelectedSettings] = useState<string[]>([]);
@@ -80,6 +82,11 @@ function QuizMode() {
         setLoading(!loading);
     }
 
+    // function to toggle import state
+    const toggleImport = () => {
+        setShowImport(!showImport);
+    }
+
     // function to toggle recommended quizzes state
     const toggleRecommended = () => {
         setRecommended(!recommended);
@@ -118,6 +125,7 @@ function QuizMode() {
         <div className='quiz-mode'>
             <div className="quiz-sidebar">
                 <Loading open={loading} />
+                <Import open={showImport} close={toggleImport} />
                 <Modal open={showModal} close={toggleModal}>
                     <div className='modal-content'>
                         <div className='modal-heading'>
@@ -215,6 +223,12 @@ function QuizMode() {
                     <div className="quiz-label">
                         <FontAwesomeIcon icon={faCommentDots} />
                         <span className='quiz-label'>RECENTS</span>
+                    </div>
+                    <div className="quiz-container-buttons">
+                        <button className="import" onClick={() => {toggleImport();} }>
+                            <FontAwesomeIcon className='download-icon' icon={faDownload} />
+                            Import
+                        </button>
                     </div>
                 </div>
                 <div className="quizzes">
