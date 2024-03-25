@@ -25,6 +25,7 @@ function ChatMode() {
     const [waiting, setWaiting] = useState<boolean>(false);
     const [prompt, setPrompt] = useState<string>('');
     const [chat, setChat] = useState<ChatState | null>(null);
+    const [search, setSearch] = useState<string>('');
     const chatContainerRef = useRef<HTMLDivElement>(null);
 
     // function to scroll to bottom.
@@ -32,6 +33,11 @@ function ChatMode() {
         if (chatContainerRef.current !== null)
             chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     };
+
+    // filter chats for search term in search box
+    const filteredChats = chats.filter(chat => {
+        return chat.chats.some(message => message.toLowerCase().includes(search.toLowerCase()));
+    });
 
     // call backend route to create a new chat object for the user.
     const createChat = () => {
@@ -132,15 +138,18 @@ function ChatMode() {
         <div className="chat-mode">
             <div className="chat-sidebar">
                 <div className="chat-search">
-                    Chats
-                    <button onClick={() => {createChat()}}className='create-chat-button'>New Chat</button>
+                    <div className="chat-search-top">
+                        Chats
+                        <button onClick={() => {createChat()}}className='create-chat-button'>New Chat</button>
+                    </div>
+                    <input placeholder='Search' value={search} onChange={(e) => setSearch(e.target.value)} />
                 </div>
                 <div className="chat-recent">
                     <FontAwesomeIcon icon={faCommentDots} />
                     <text className='chat-recent-label'>RECENTS</text>
                 </div>
                 <div className="chats">
-                    {chats.slice().reverse().map((chat) => {
+                    {filteredChats.slice().reverse().map((chat) => {
                         // get date difference
                         const creation = new Date(chat.created_at);
                         const current = new Date();
