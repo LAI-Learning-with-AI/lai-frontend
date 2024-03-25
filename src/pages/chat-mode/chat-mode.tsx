@@ -34,10 +34,14 @@ function ChatMode() {
             chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     };
 
-    // filter chats for search term in search box
-    const filteredChats = chats.filter(chat => {
-        return chat.chats.some(message => message.toLowerCase().includes(search.toLowerCase()));
-    });
+    // function to search thru chats for search term
+    const searchQuery = (chat: ChatState, searchTerm: string): boolean => {
+        // check if messages contain
+        return (chat.chats.some(message => message.toLowerCase().includes(searchTerm.toLowerCase())) || chat.title.toLowerCase().includes(searchTerm.toLowerCase()))
+    };
+
+    // Filter chats based on whether any message or title/description matches the search query
+    const filteredChats = chats.filter(chat => searchQuery(chat, search));
 
     // call backend route to create a new chat object for the user.
     const createChat = () => {
