@@ -193,15 +193,17 @@ function ChatMode() {
                         </div>
                     </div>
                 </div>
-                {chat && (
-                    chat.chats.map((message, index) => (
-                        index % 2 === 0 ? (
-                            <Question>{message}</Question>
-                        ) : (
-                            <Response>{message}</Response>
-                        )
-                    ))
-                )}
+                <div className="message-container">
+                    {chat && (
+                        chat.chats.map((message, index) => (
+                            index % 2 === 0 ? (
+                                <Question>{message}</Question>
+                            ) : (
+                                <Response>{message}</Response>
+                            )
+                        ))
+                    )}
+                </div>
                 {chat && (                
                     <div className="chat-input">
                         <img className={`img ${waiting ? "display-block" : "display-none"}`} src={spinner} alt="Loading..." />
