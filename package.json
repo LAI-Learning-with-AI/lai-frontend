@@ -15,15 +15,18 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@types/node": "^20.11.20",
+    "assemblyai": "^4.3.3",
     "dotenv": "^16.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-expanding-textarea": "^2.3.6",
-    "react-router-dom": "^6.22.1"
+    "react-router-dom": "^6.22.1",
+    "recordrtc": "^5.6.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
+    "@types/recordrtc": "^5.6.14",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "@vitejs/plugin-react": "^4.2.1",
