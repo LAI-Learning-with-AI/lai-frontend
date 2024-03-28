@@ -8,6 +8,7 @@ import Response from '../../components/modes/response.tsx';
 import Textarea from 'react-expanding-textarea'
 import spinner from '../../assets/chat-loading.svg'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import SpeechToText from '../../components/stt.tsx';
 
 // interface for chat objects
 interface ChatState {
@@ -140,6 +141,7 @@ function ChatMode() {
 
     return (
         <div className="chat-mode">
+            <SpeechToText></SpeechToText>
             <div className="chat-sidebar">
                 <div className="chat-search">
                     <div className="chat-search-top">

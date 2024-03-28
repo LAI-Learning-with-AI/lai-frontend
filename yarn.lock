@@ -573,6 +573,11 @@
   dependencies:
     "@babel/types" "^7.20.7"
 
+"@types/dom-speech-recognition@*", "@types/dom-speech-recognition@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@types/dom-speech-recognition/-/dom-speech-recognition-0.0.4.tgz#3ac5eddfbaa0dacf7eca3d8979ef4f3e519d8e19"
+  integrity sha512-zf2GwV/G6TdaLwpLDcGTIkHnXf8JEf/viMux+khqKQKDa8/8BAUtXXZS563GnvJ4Fg0PBLGAaFf2GekEVSZ6GQ==
+
 "@types/estree@1.0.5":
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.5.tgz#a6ce3e556e00fd9895dd872dd172ad0d4bd687f4"
@@ -602,6 +607,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-speech-recognition@^3.9.5":
+  version "3.9.5"
+  resolved "https://registry.yarnpkg.com/@types/react-speech-recognition/-/react-speech-recognition-3.9.5.tgz#7ef421e11c0d8827192022385ba58511235c6729"
+  integrity sha512-m3Sg3Xtj/YcEUu+nLPGwI6oq1wcSblsuyAmXgBfW6Nprfmtl+A+kH4ruPzzFKnFkq6WmmRxdsLvt0nLRAAJtBw==
+  dependencies:
+    "@types/dom-speech-recognition" "*"
+
 "@types/react@*", "@types/react@^18.2.55":
   version "18.2.56"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.56.tgz#2d3e9021a0b6eb5bfc227761cc61b1c6dc6e0cd8"
@@ -610,6 +622,11 @@
     "@types/prop-types" "*"
     "@types/scheduler" "*"
     csstype "^3.0.2"
+
+"@types/regenerator-runtime@^0.13.5":
+  version "0.13.5"
+  resolved "https://registry.yarnpkg.com/@types/regenerator-runtime/-/regenerator-runtime-0.13.5.tgz#988e5fa1e3da8a947932b37bdeb68c8a9184e173"
+  integrity sha512-kuQTuRQB2RafkNk1qimK3zu4KSfy6z47diYGXVDcFcAZ3pVTR25CXiSb3adKry+onx2BBB9DBXxxLdbuglx5mw==
 
 "@types/scheduler@*":
   version "0.16.8"
@@ -1558,6 +1575,11 @@ react-router@6.22.1:
   dependencies:
     "@remix-run/router" "1.15.1"
 
+react-speech-recognition@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/react-speech-recognition/-/react-speech-recognition-3.10.0.tgz#7aa43bb28d78b92671864dabba3a70489ccad27b"
+  integrity sha512-EVSr4Ik8l9urwdPiK2r0+ADrLyDDrjB0qBRdUWO+w2MfwEBrj6NuRmy1GD3x7BU/V6/hab0pl8Lupen0zwlJyw==
+
 react-with-forwarded-ref@^0.3.5:
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/react-with-forwarded-ref/-/react-with-forwarded-ref-0.3.5.tgz#7d0bae2a9996fc91493f40ab179b8c54d29cfab9"
@@ -1571,6 +1593,11 @@ react@^18.2.0:
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"
+
+regenerator-runtime@^0.14.1:
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.14.1.tgz#356ade10263f685dda125100cd862c1db895327f"
+  integrity sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==
 
 resolve-from@^4.0.0:
   version "4.0.0"
