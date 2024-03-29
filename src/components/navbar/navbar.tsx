@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './navbar.css';
-import { faGraduationCap, faCommentDots, faFileCircleQuestion } from '@fortawesome/free-solid-svg-icons'
+import { faGraduationCap, faCommentDots, faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Navbar() {
@@ -23,7 +23,7 @@ function Navbar() {
                 </a>
                 <a href="/quizzes">
                     <i className="mode">
-                        <FontAwesomeIcon icon={faFileCircleQuestion} className='icon' />  
+                        <FontAwesomeIcon icon={faClipboardCheck} className='icon' />  
                         <span className="label">Quiz</span>
                     </i>
                 </a>
