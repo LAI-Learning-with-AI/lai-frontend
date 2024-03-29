@@ -141,7 +141,6 @@ function ChatMode() {
 
     return (
         <div className="chat-mode">
-            <SpeechToText></SpeechToText>
             <div className="chat-sidebar">
                 <div className="chat-search">
                     <div className="chat-search-top">
@@ -214,12 +213,15 @@ function ChatMode() {
                     <div className="chat-input">
                         <img className={`img ${waiting ? "display-block" : "display-none"}`} src={spinner} alt="Loading..." />
                         <Textarea className={`textarea ${waiting ? "display-none" : "display-block"}`} value={prompt} onChange={(e) => setPrompt(e.target.value)} onKeyDown={handleEnter} placeholder="Enter prompt here..." />
-                        <button onClick={() => {
-                            if (!waiting)
-                                getResponse(prompt);
-                        }} className={`chat-input-send ${waiting ? "disabled" : "enabled"}`}>
-                            <FontAwesomeIcon icon={faArrowRight} />
-                        </button>
+                        <div className='textarea-buttons'>
+                            <SpeechToText update={setPrompt} submit={getResponse} waiting={waiting} />
+                            <button onClick={() => {
+                                if (!waiting)
+                                    getResponse(prompt);
+                            }} className={`chat-input-send ${waiting ? "disabled" : "enabled"}`}>
+                                <FontAwesomeIcon icon={faArrowRight} />
+                            </button>
+                        </div>
                     </div>
                 )}
             </div>
