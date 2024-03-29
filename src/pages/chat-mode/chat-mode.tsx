@@ -8,6 +8,7 @@ import Response from '../../components/modes/response.tsx';
 import Textarea from 'react-expanding-textarea'
 import spinner from '../../assets/chat-loading.svg'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import SpeechToText from '../../components/stt.tsx';
 
 // interface for chat objects
 interface ChatState {
@@ -212,12 +213,15 @@ function ChatMode() {
                     <div className="chat-input">
                         <img className={`img ${waiting ? "display-block" : "display-none"}`} src={spinner} alt="Loading..." />
                         <Textarea className={`textarea ${waiting ? "display-none" : "display-block"}`} value={prompt} onChange={(e) => setPrompt(e.target.value)} onKeyDown={handleEnter} placeholder="Enter prompt here..." />
-                        <button onClick={() => {
-                            if (!waiting)
-                                getResponse(prompt);
-                        }} className={`chat-input-send ${waiting ? "disabled" : "enabled"}`}>
-                            <FontAwesomeIcon icon={faArrowRight} />
-                        </button>
+                        <div className='textarea-buttons'>
+                            <SpeechToText update={setPrompt} submit={getResponse} waiting={waiting} />
+                            <button onClick={() => {
+                                if (!waiting)
+                                    getResponse(prompt);
+                            }} className={`chat-input-send ${waiting ? "disabled" : "enabled"}`}>
+                                <FontAwesomeIcon icon={faArrowRight} />
+                            </button>
+                        </div>
                     </div>
                 )}
             </div>

@@ -163,6 +163,11 @@
     display: none;
 }
 
+.textarea-buttons {
+    display: flex;
+
+}
+
 .img.display-block {
     display: block;
 }
