@@ -131,7 +131,7 @@
 
 .questionf .multiple-choice {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: calc(50% - 10px) calc(50% - 10px);
     gap: 20px;
     width: calc(100% - 80px);
     margin: 0 40px;
@@ -178,7 +178,7 @@
 
 .questionf .short-answer Textarea {
     resize: none;
-    width: 90%;
+    width: calc(100% - 120px);
     background-color: #27272A;
     border-color: #FFFFFF;
     border-radius: 20px;

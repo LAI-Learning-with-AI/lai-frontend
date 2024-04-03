@@ -9,12 +9,15 @@ import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 
 // define interface for quiz
 interface QuizState {
+    id: number;
     date: string;
     questions: Question[];
 }
 
 // define interface for questions
 interface Question {
+    id: number;
+    answer: string;
     choices: string | null;
     question: string;
     type: "TRUE_FALSE" | "MULTIPLE_CHOICE" | "SHORT_ANSWER" | "CODING";
@@ -61,6 +64,7 @@ function InQuiz() {
             .then(response => response.json())
             .then((res: QuizState) => {
                 setQuiz(res);
+                console.log(res);
             })
             .catch(error => {
                 console.error(error);
@@ -97,7 +101,7 @@ function InQuiz() {
                                 <div className='question-label'>Your answer</div>
                                 {question.choices !== null ? (
                                     <div className='multiple-choice'>
-                                        {question.choices.split('@').map((choice, choiceIndex) => (
+                                        {question.choices.split(', ').map((choice, choiceIndex) => (
                                             <div key={choiceIndex} className={`choice ${selectedChoices[index] === choiceIndex ? 'selected' : ''}`} onClick={() => handleChoiceClick(index, choiceIndex)}>
                                                 {choice}
                                             </div>
