@@ -35,8 +35,7 @@ const Microphone: React.FC<Props> = ({ update, submit, waiting }) => {
   // update input box with final transcript at the end and submit when finished
   useEffect(() => {
     if (finalTranscript) {
-      submit(finalTranscript);
-      resetTranscript();
+      update(finalTranscript);
     }
   }, [finalTranscript, update]);
 
