@@ -8,6 +8,7 @@ import Profile from './pages/profile.tsx'
 import './App.css'
 import Login from './pages/signup/login.tsx'
 import LearnMode from './pages/learn-mode/learn-mode.tsx'
+import Topic from './pages/learn-mode/Topic.tsx'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path='/signup' element={<SignUp />} />
             <Route path='/login' element={<Login />} />
             <Route path='/learn' element={<LearnMode />} />
+            <Route path='/learn/:topic' element={<Topic />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/' element={<ChatMode />} />
             <Route path='/quizzes' element={<QuizMode />} />
