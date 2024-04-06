@@ -186,7 +186,9 @@ function ChatMode() {
             </div>
             <div className="chat-messages" ref={chatContainerRef}>
                 <div className="chat-header">
-                    {chat?.chats[0] ? chat?.chats[0] : chat?.title }
+                    <div className="chat-header-name">
+                        {chat?.chats[0] ? chat?.chats[0] : chat?.title }
+                    </div>
                     <div className="chat-header-buttons">
                         <div className='icons'>
                             <button className='icon'>

@@ -205,6 +205,13 @@
     font-family:'Montserrat';
 }
 
+.chat-header-name {
+    width: 75%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .chat-header-buttons {
     display: flex;
     align-items: center;
