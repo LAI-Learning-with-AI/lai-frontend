@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import './Topic.css'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Markdown from 'markdown-to-jsx'
 import { faGear, faPlus, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import spinner from '../../assets/chat-loading.svg'
@@ -141,7 +142,8 @@ function Topic() {
                 </div>
                 <div className='topic-box'>
                     <div className='topic-text'>
-                        { explanation ? explanation : (
+                        { explanation ? 
+                            <Markdown>{explanation}</Markdown> : (
                             <div className='button-container'>
                                 { buttonLoading ?
                                     <img src={spinner} alt="Loading..." /> :

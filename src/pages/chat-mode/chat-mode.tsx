@@ -9,6 +9,7 @@ import Textarea from 'react-expanding-textarea'
 import spinner from '../../assets/chat-loading.svg'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import SpeechToText from '../../components/stt.tsx';
+import Markdown from 'markdown-to-jsx';
 
 // interface for chat objects
 interface ChatState {
@@ -204,9 +205,17 @@ function ChatMode() {
                     {chat && (
                         chat.chats.map((message, index) => (
                             index % 2 === 0 ? (
-                                <Question>{message}</Question>
+                                <Question>
+                                    <Markdown>
+                                        {message}
+                                    </Markdown>
+                                </Question>
                             ) : (
-                                <Response>{message}</Response>
+                                <Response>
+                                    <Markdown>
+                                        {message}
+                                    </Markdown>
+                                </Response>
                             )
                         ))
                     )}
