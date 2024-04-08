@@ -17,10 +17,15 @@ interface QuizState {
 // define interface for questions
 interface Question {
     id: number;
-    answer: string;
+    answers: string;
     choices: string | null;
     question: string;
     type: "TRUE_FALSE" | "MULTIPLE_CHOICE" | "SHORT_ANSWER" | "CODING";
+    user_answer: string;
+}
+
+interface SubmissionState {
+    questions: Question[];
 }
 
 function InQuiz() {
@@ -32,7 +37,7 @@ function InQuiz() {
     const [quiz, setQuiz] = useState<QuizState>();
     let { id } = useParams<{ id: string }>();
     const [selectedChoices, setSelectedChoices] = useState<(number | null)[]>(Array(quiz?.questions.length).fill(null));
-    const [textAnswers, setTextAnswers] = useState<string[]>(Array(quiz?.questions.length).fill(''));
+    const [textAnswers, setTextAnswers] = useState<string[]>(Array(quiz?.questions.length).fill(undefined));
 
     // function to store multiple choice questions
     const handleChoiceClick = (questionIndex: number, choiceIndex: number) => {
@@ -47,6 +52,52 @@ function InQuiz() {
         newTextAnswers[questionIndex] = answer;
         setTextAnswers(newTextAnswers);
     };
+
+    // function to handle submit button press
+    const handleSubmit = () => {
+        console.log(selectedChoices);
+        console.log(textAnswers);
+        console.log(quiz?.questions.length);
+
+        let submission: SubmissionState = {
+            questions: []
+        };
+
+        quiz?.questions.map((question, index) => {
+            if (question.type === 'SHORT_ANSWER' || question.type === 'CODING') {
+                let newQuestion: Question = { ...question };
+                newQuestion.user_answer = textAnswers[index] ? textAnswers[index] : '';
+                submission.questions.push(newQuestion);
+            }
+            else {
+                let newQuestion: Question = { ...question };
+                newQuestion.answers = newQuestion.answers?.replace(/^[A-D]\) /, '');
+                newQuestion.user_answer = selectedChoices[index] !== undefined && question.choices !== null ? question?.choices.split('@')[selectedChoices[index]?? 0] : '';
+                submission.questions.push(newQuestion);
+            }
+        })
+        console.log(submission);
+
+        fetch(`${import.meta.env.VITE_SERVER}/sheeshongod`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "userId": user?.sub,
+                "quizId": id,
+                "questions": submission.questions
+            })
+        })
+        .then(response => response.json())
+        .then((res: QuizState) => {
+            setQuiz(res);
+            console.log(res);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
 
     // when user object is mounted, retrieve quizzes
     useEffect(() => {
@@ -118,8 +169,8 @@ function InQuiz() {
                 )}
             </div>
             <div className="in-quiz-footer">
-                <div className='text'>{selectedChoices.filter(choice => choice !== null).length + textAnswers.filter(answer => answer !== '' && answer).length} of {quiz?.questions.length} answered</div>
-                <button className='submit-quiz' onClick={() => navigate('/quiz')}>Submit</button>
+                <div className='text'>{selectedChoices.filter(choice => choice !== null && choice !== undefined).length + textAnswers.filter(answer => answer !== '' && answer).length} of {quiz?.questions.length} answered</div>
+                <button className='submit-quiz' onClick={() => handleSubmit()}>Submit</button>
             </div>
         </div>
     );

@@ -69,6 +69,24 @@
     font-weight: bold;
 } 
 
+.topic-text .button-container {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.topic-text button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0px;
+    background-color: #27272A;
+    height: 60px;
+    width: 60px;
+    border-radius: 15px;
+}
+
 .topic-element {
     display: flex;
     flex-direction: column;
@@ -97,6 +115,7 @@
 
 .topic-text {
     padding: 25px;
+    height: calc(100% - 50px);
 }
 
 .topic-resource {
