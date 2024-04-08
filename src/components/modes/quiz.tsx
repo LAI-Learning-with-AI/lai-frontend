@@ -8,10 +8,11 @@ import "react-circular-progressbar/dist/styles.css";
 interface Props {
     name: string;
     topics: string;
+    score: number | null;
     onClick: () => void;
 }
 
-const Quiz: React.FC<Props> = ({ name, topics, onClick } ) => {
+const Quiz: React.FC<Props> = ({ name, topics, score, onClick } ) => {
     return (
         <div className='quiz' onClick={onClick}>
             <div className='quiz-descriptions'>
@@ -22,25 +23,27 @@ const Quiz: React.FC<Props> = ({ name, topics, onClick } ) => {
                     {topics}
                 </div>
             </div>
-            <div className='quiz-buttons'>
-                <div className='icons'>
-                    <button className='icon'>
-                        <FontAwesomeIcon icon={faRotateRight} />
-                    </button>
-                    <div className='icon progress'>
-                        <CircularProgressbar
-                            value={80}
-                            text={`80%`}
-                            styles={buildStyles({
-                                textColor: "#A6FF86",
-                                pathColor: "#A6FF86",
-                                trailColor: "#FF4E2E",
-                                textSize: "30px"
-                            })}
-                        />
+            {   score &&
+                <div className='quiz-buttons'>
+                    <div className='icons'>
+                        <button className='icon'>
+                            <FontAwesomeIcon icon={faRotateRight} />
+                        </button>
+                        <div className='icon progress'>
+                            <CircularProgressbar
+                                value={score*100}
+                                text={`${score*100}`}
+                                styles={buildStyles({
+                                    textColor: "#A6FF86",
+                                    pathColor: "#A6FF86",
+                                    trailColor: "#FF4E2E",
+                                    textSize: "30px"
+                                })}
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     )
 }
