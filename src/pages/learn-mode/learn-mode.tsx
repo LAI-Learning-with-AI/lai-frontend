@@ -121,9 +121,9 @@ function LearnMode() {
             <div className='dropdown-container'>
                 <button className='dropdown' onClick={() => toggleDropdown('mastered')}>
                     Mastered
-                    <FontAwesomeIcon icon={dropdown.mastered ? faCircleChevronUp: faCircleChevronDown} />
+                    <FontAwesomeIcon icon={!dropdown.mastered ? faCircleChevronUp: faCircleChevronDown} />
                 </button>
-                <div className={`dropdown-content ${dropdown.mastered ? 'open' : 'closed'}`}>
+                <div className={`dropdown-content ${!dropdown.mastered ? 'open' : 'closed'}`}>
                     {topics.map((topic, index) => (
                         topic.mastery === 'mastered' && (
                             <button key={index} onClick={() => navigate(`/learn/${convertTopicToUrl(topic.topic)}`)}>
@@ -138,9 +138,9 @@ function LearnMode() {
             <div className='dropdown-container'>
                 <button className='dropdown' onClick={() => toggleDropdown('struggling')}>
                     Struggling
-                    <FontAwesomeIcon icon={dropdown.struggling ? faCircleChevronUp: faCircleChevronDown} />
+                    <FontAwesomeIcon icon={!dropdown.struggling ? faCircleChevronUp: faCircleChevronDown} />
                 </button>
-                <div className={`dropdown-content ${dropdown.struggling ? 'open' : 'closed'}`}>
+                <div className={`dropdown-content ${!dropdown.struggling ? 'open' : 'closed'}`}>
                     {topics.map((topic, index) => (
                         topic.mastery === 'struggling' && (
                             <button key={index} onClick={() => navigate(`/learn/${convertTopicToUrl(topic.topic)}`)}>
@@ -154,9 +154,9 @@ function LearnMode() {
             <div className='dropdown-container last'>
                 <button className='dropdown' onClick={() => toggleDropdown('learning')}>
                     Learning
-                    <FontAwesomeIcon icon={dropdown.learning ? faCircleChevronUp: faCircleChevronDown} />
+                    <FontAwesomeIcon icon={!dropdown.learning ? faCircleChevronUp: faCircleChevronDown} />
                 </button>
-                <div className={`dropdown-content ${dropdown.learning ? 'open' : 'closed'}`}>
+                <div className={`dropdown-content ${!dropdown.learning ? 'open' : 'closed'}`}>
                     {topics.map((topic, index) => (
                         topic.mastery === 'learning' && (
                             <button key={index} onClick={() => navigate(`/learn/${convertTopicToUrl(topic.topic)}`)}>
