@@ -10,10 +10,10 @@ import Loading from '../../components/modes/loading.tsx';
 import Import from '../../components/modes/import.tsx';
 
 interface QuizState {
-    id: number,
+    id: number;
     name: string;
     topics: string;
-    score: string;
+    score: number;
     created_at: string;
 }
 
@@ -215,7 +215,7 @@ function QuizMode() {
                     </div>
                     <div className={`recommended-quizzes ${recommended ? "enable" : "disable"}`}>
                         {randomQuizzes.map((quiz) => (
-                            <Quiz name={quiz.topics} topics={"Recommended by 1 teacher and 5 students"} onClick={() => navigate(`/quiz/${quiz.id}`)} />
+                            <Quiz name={quiz.topics} topics={"Recommended by 1 teacher and 5 students"} score={null} onClick={() => navigate(`/quiz/${quiz.id}`)} />
                         ))}
                     </div>
                 </div>
@@ -233,7 +233,7 @@ function QuizMode() {
                 </div>
                 <div className="quizzes">
                     {quizzes.map((quiz) => (
-                        <Quiz name={quiz.name} topics={quiz.topics} onClick={() => navigate(`/quiz/${quiz.id}`)} />
+                        <Quiz name={quiz.name} topics={quiz.topics} score={quiz.score} onClick={() => navigate(`/quiz/${quiz.id}`)} />
                     ))}
                 </div>
             </div>
