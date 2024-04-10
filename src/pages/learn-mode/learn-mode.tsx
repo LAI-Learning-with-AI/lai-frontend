@@ -20,6 +20,13 @@ interface DropdownState {
     learning: boolean;
 }
 
+interface ChartData {
+    [topic: string]: {
+        dates: string[];
+        average_scores: number[];
+    };
+}
+
 function LearnMode() {
     // vars
     const navigate = useNavigate();
@@ -30,6 +37,7 @@ function LearnMode() {
         struggling: false,
         learning: false
     });
+    const [chartData, setChartData] = useState<ChartData>({});
 
     // toggle dropdowns when you click to expand
     const toggleDropdown = (dropdownName: keyof DropdownState) => {
@@ -58,6 +66,23 @@ function LearnMode() {
         .catch(error => {
             console.error(error);
         });
+        fetch(`${import.meta.env.VITE_SERVER}/time_analysis`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "userId": user?.sub
+            })
+        })
+        .then(response => response.json())
+        .then((res: ChartData) => {
+            setChartData(res);
+            console.log(res);
+        })
+        .catch(error => {
+            console.error(error);
+        });
     }, [user]);
 
     const data = [
@@ -68,7 +93,7 @@ function LearnMode() {
     ];
       
     // options for the piechart
-    const options = {
+    const pieOptions = {
         backgroundColor: "transparent",
         pieHole: 0.4,
         is3D: false,
@@ -88,6 +113,72 @@ function LearnMode() {
         pieSliceBorderColor: '#1E1E1E',
         colors: ['#A6FF86', '#FF4E2E', '#FFFF4E']
     };
+
+    const lineOptions = {
+        lineWidth: 5,
+        interpolateNulls: true,
+        hAxis: { 
+            title: 'Date',
+            textStyle: {
+                color: '#ffffff',
+                fontName: 'Montserrat',
+                fontSize: 12
+            },
+            titleTextStyle: {
+                color: '#ffffff',
+                fontName: 'Montserrat',
+                fontSize: 16
+            }
+        },
+        vAxis: { 
+            title: 'Average Score',
+            textStyle: {
+                color: '#ffffff',
+                fontName: 'Montserrat',
+                fontSize: 12
+            },
+            titleTextStyle: {
+                color: '#ffffff',
+                fontName: 'Montserrat',
+                fontSize: 16
+            }
+        },
+        backgroundColor: "transparent",
+        legend: {
+            position: 'bottom',
+            alignment: 'center',
+            textStyle: {
+                color: '#ffffff',
+                fontName: 'Montserrat',
+                fontSize: 16
+            }
+        }
+    }
+
+    const formatChartData = () => {
+        const datesSet = new Set<string>();
+        const dataValues: { [date: string]: number[] } = {};
+      
+        Object.keys(chartData).forEach((key) => {
+          chartData[key].dates.forEach((date, index) => {
+            datesSet.add(date);
+            if (!dataValues[date]) {
+              dataValues[date] = new Array(Object.keys(chartData).length).fill(null);
+            }
+            dataValues[date][Object.keys(chartData).indexOf(key)] = chartData[key].average_scores[index];
+          });
+        });
+      
+        const dates = Array.from(datesSet).sort();
+        const result = dates.map((date) => {
+          const rowData = [date, ...dataValues[date]];
+          return rowData;
+        });
+      
+        const header = ['Date', ...Object.keys(chartData)];
+        console.log([header, ...result])
+        return [header, ...result];
+      };
 
     // convert topic to url
     const convertTopicToUrl = (topic: string): string => {
@@ -109,13 +200,22 @@ function LearnMode() {
                         </div>
                     </div>
                 </div>
-            <div className='chart-container'>
+            <div className='chart-container pie'>
                 <Chart
                     chartType="PieChart"
                     width="100%"
                     height="400px"
                     data={data}
-                    options={options}
+                    options={pieOptions}
+                />
+            </div>
+            <div className='chart-container line'>
+                <Chart
+                    width='100%'
+                    height='400px'
+                    chartType="LineChart"
+                    data={formatChartData()}
+                    options={lineOptions}
                 />
             </div>
             <div className='dropdown-container'>
