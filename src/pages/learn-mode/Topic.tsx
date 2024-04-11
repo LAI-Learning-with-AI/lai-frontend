@@ -6,6 +6,7 @@ import Markdown from 'markdown-to-jsx'
 import { faGear, faPlus, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import spinner from '../../assets/chat-loading.svg'
+import { toast } from 'react-toastify';
 
 // interface for retrieving explanation from backend
 interface ExplanationState {
@@ -38,7 +39,7 @@ function Topic() {
         return str?.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
     }
 
-    // fxn to fetch explanation from backend. if it doesn't exist, then generate one.
+    // fxn to fetch explanation from backend
     const fetchExplanation = () => {
         fetch(`${import.meta.env.VITE_SERVER}/getExplanation`, {
             method: 'POST',
@@ -79,6 +80,7 @@ function Topic() {
         })
         .catch(error => {
             setButtonLoading(false);
+            toast.error('Failed to generate explanation');
             console.error(error);
         });
     }
@@ -103,6 +105,7 @@ function Topic() {
         })
         .catch(error => {
             console.error(error);
+            toast.error('Failed to retrieve recommended resources');
         });
     }
     

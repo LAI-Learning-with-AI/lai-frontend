@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import Modal from '../../components/modes/modal.tsx';
 import Loading from '../../components/modes/loading.tsx';
 import Import from '../../components/modes/import.tsx';
+import { toast } from 'react-toastify';
 
 interface QuizState {
     id: number;
@@ -41,8 +42,7 @@ function QuizMode() {
     // function to make a POST request to backend to create a new quiz in the DB for user
     const createQuiz = () => {
         // loading screen
-        toggleLoading();
-
+        setLoading(true);
         // request
         fetch(`${import.meta.env.VITE_SERVER}/generatequiz`, {
             method: 'POST',
@@ -60,14 +60,17 @@ function QuizMode() {
         .then(response => response.json())
         .then((res) => {
             // remove loading screen
-            toggleLoading();
+            setLoading(false);
+            toast.success('Quiz generated successfully');
 
             // move into quiz
             navigate(`/quiz/${res.quiz_id}`)
         })
         .catch(error => {
             // remove loading screen
-            toggleLoading();
+            setLoading(false);
+            toast.error('Failed to generate quiz');
+
             console.error(error);
         });
     }
@@ -75,11 +78,6 @@ function QuizMode() {
     // function to toggle modal state
     function toggleModal() {
         setShowModal(!showModal);
-    }
-
-    // function to toggle loading state
-    const toggleLoading = () => {
-        setLoading(!loading);
     }
 
     // function to toggle import state
@@ -117,6 +115,7 @@ function QuizMode() {
             setQuizzes(res);
         })
         .catch(error => {
+            toast.error('Error Retrieving Quiz Data.');
             console.error(error);
         });
     }, [user]);

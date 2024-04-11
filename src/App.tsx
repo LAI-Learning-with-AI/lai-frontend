@@ -9,12 +9,27 @@ import './App.css'
 import Login from './pages/signup/login.tsx'
 import LearnMode from './pages/learn-mode/learn-mode.tsx'
 import Topic from './pages/learn-mode/Topic.tsx'
+import { Bounce, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 function App() {
   return (
       <Router>
-        <Navbar />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          transition={Bounce}
+        />
+        <Navbar/>
         <div className='app-container'>
           <div className='navbar-spacer'></div>
           <Routes>

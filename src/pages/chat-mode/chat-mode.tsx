@@ -10,6 +10,7 @@ import spinner from '../../assets/chat-loading.svg'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import SpeechToText from '../../components/stt.tsx';
 import Markdown from 'markdown-to-jsx';
+import { toast } from 'react-toastify';
 
 // interface for chat objects
 interface ChatState {
@@ -61,6 +62,7 @@ function ChatMode() {
             getChats();
         })
         .catch(error => {
+            toast.error('Failed to create quiz');
             console.error(error);
         });
     }
@@ -95,6 +97,8 @@ function ChatMode() {
         })
         .catch(error => {
             setWaiting(false);
+            chat?.chats.push('Error generating response. Try again later.')
+            toast.error('Failed to generate response');
             console.error(error);
         });
     }
@@ -126,6 +130,7 @@ function ChatMode() {
             setChats(res);
         })
         .catch(error => {
+            toast.error('Failed to retrieve chat data');
             console.error(error);
         });
     }

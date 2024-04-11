@@ -5,6 +5,7 @@ import { Chart } from "react-google-charts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faCircleChevronDown, faCircleChevronUp, faGear, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 //define interface for topics
 interface TopicState {
@@ -64,8 +65,10 @@ function LearnMode() {
             console.log(res);
         })
         .catch(error => {
+            toast.error('Failed to retrieve quiz summary');
             console.error(error);
         });
+
         fetch(`${import.meta.env.VITE_SERVER}/time_analysis`, {
             method: 'POST',
             headers: {
@@ -81,6 +84,7 @@ function LearnMode() {
             console.log(res);
         })
         .catch(error => {
+            toast.error('Failed to retrieve time analysis');
             console.error(error);
         });
     }, [user]);
