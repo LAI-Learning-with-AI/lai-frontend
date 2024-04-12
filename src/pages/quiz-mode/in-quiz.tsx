@@ -78,7 +78,7 @@ function InQuiz() {
         })
         console.log(submission);
 
-        fetch(`${import.meta.env.VITE_SERVER}/sheeshongod`, {
+        fetch(`${import.meta.env.VITE_SERVER}/gradequiz`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

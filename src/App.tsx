@@ -11,9 +11,12 @@ import LearnMode from './pages/learn-mode/learn-mode.tsx'
 import Topic from './pages/learn-mode/Topic.tsx'
 import { Bounce, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useState } from 'react'
 
 
 function App() {
+  const [light, setLight] = useState(false);
+
   return (
       <Router>
         <ToastContainer
@@ -29,21 +32,23 @@ function App() {
           theme="colored"
           transition={Bounce}
         />
-        <Navbar/>
-        <div className='app-container'>
-          <div className='navbar-spacer'></div>
-          <Routes>
-            <Route path='/signup' element={<SignUp />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/learn' element={<LearnMode />} />
-            <Route path='/learn/:topic' element={<Topic />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/' element={<ChatMode />} />
-            <Route path='/quizzes' element={<QuizMode />} />
-            <Route path='/quiz/:id' element={<InQuiz />} />
-          </Routes>
+        <div className={`theme ${light ? 'light' : 'dark'}`}>
+          <Navbar/>
+          <div className='app-container'>
+            <div className='navbar-spacer'></div>
+            <Routes>
+              <Route path='/signup' element={<SignUp />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/learn' element={<LearnMode />} />
+              <Route path='/learn/:topic' element={<Topic />} />
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/' element={<ChatMode />} />
+              <Route path='/quizzes' element={<QuizMode />} />
+              <Route path='/quiz/:id' element={<InQuiz />} />
+            </Routes>
+          </div>
         </div>
-      </Router>
+        </Router>
   )
 }
 
