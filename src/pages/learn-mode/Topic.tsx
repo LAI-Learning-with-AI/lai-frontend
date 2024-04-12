@@ -21,7 +21,13 @@ interface ResourcesResponseState {
 
 // interface for resources
 interface ResourcesState {
-    [key: string]: string[];
+    [key: string]: {
+        heading?: string;
+        heading_font?: number;
+        content_font?: number;
+        page_numbers?: number[];
+        source: string;
+    }[];
 }
 
 
@@ -100,7 +106,11 @@ function Topic() {
         .then(response => response.json())
         .then((res: ResourcesResponseState) => {
             const key = titleCase(topic)
-            setRecommended(res.resources[0][key])
+            let sources: Set<string> = new Set();
+            res.resources[0][key].forEach((object) => {
+                sources.add(object.source)
+            })
+            setRecommended([...sources]);
             console.log(recommended);
         })
         .catch(error => {
