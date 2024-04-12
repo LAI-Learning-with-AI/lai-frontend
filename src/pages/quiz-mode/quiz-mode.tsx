@@ -232,7 +232,12 @@ function QuizMode() {
                 </div>
                 <div className="quizzes">
                     {quizzes.map((quiz) => (
-                        <Quiz name={quiz.name} topics={quiz.topics} score={quiz.score} onClick={() => navigate(`/quiz/${quiz.id}`)} />
+                        <Quiz name={quiz.name} topics={quiz.topics} score={quiz.score} onClick={() => {
+                            if (quiz.score)
+                                navigate(`/results/${quiz.id}`)
+                            else navigate(`/quiz/${quiz.id}`)
+                        }
+                    } />
                     ))}
                 </div>
             </div>

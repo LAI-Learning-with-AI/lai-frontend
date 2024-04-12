@@ -1,22 +1,21 @@
-.in-quiz {
+.quiz-results {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
     overflow-y: scroll;
     background-color: #27272A;
-    padding-bottom: 80px;
     border-right: 1px solid #555;
     top: 0;
     font-family: 'Montserrat';
     font-size: 24px;
 }
 
-.in-quiz::-webkit-scrollbar {
+.quiz-results::-webkit-scrollbar {
     display: none; /* Hide the scrollbar for webkit-based browsers */
 }
 
-.in-quiz-header {
+.quiz-results-header {
     display: flex;
     position: fixed;
     top: 0;
@@ -35,7 +34,7 @@
     font-family:'Montserrat';
 }
 
-.in-quiz-header-buttons {
+.quiz-results-header-buttons {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -43,11 +42,11 @@
     font-size: 20px;
 }
 
-.in-quiz-header-buttons .icons {
+.quiz-results-header-buttons .icons {
     display: flex;
 }
 
-.in-quiz-header-buttons .icon {
+.quiz-results-header-buttons .icon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,37 +57,7 @@
     border-radius: 15px;
 }
 
-.in-quiz-footer {
-    display: flex;
-    position: fixed;
-    width: calc(100% - 96px);
-    bottom: 0;
-    left: 96;
-    justify-content: space-between;
-    align-items: center;
-    height: 100px;
-    border-top: 1px solid #555;
-    background-color: #18181B;
-    font-size: 32px;
-    font-weight:bold;
-    font-family:'Montserrat';
-}
-
-.in-quiz-footer .submit-quiz {
-    margin-right: 20px;
-    background-color: #18A0FB;
-    height: 60px;
-    width: 280px;
-    font-size: 20px;
-    border-radius: 15px;
-    font-weight: bold;
-} 
-
-.in-quiz-footer .text {
-    margin-left: 20px;
-} 
-
-.in-quiz .questionf {
+.quiz-results .questionf {
     margin-top: 140px;
     display: flex;
     flex-direction: column;
@@ -97,7 +66,7 @@
     gap: 50px; /* remove later*/
 }
 
-.in-quiz .questionf .questione {
+.quiz-results .questionf .questione {
     display: flex;
     min-height: 400px;
     flex-direction: column;
@@ -108,12 +77,12 @@
     padding-bottom: 20px;
 }
 
-.in-quiz .questionf .quest-textee {
+.quiz-results .questionf .quest-textee {
     display: flex;
     flex-direction: column;
 }
 
-.in-quiz .questionf .info {
+.quiz-results .questionf .info {
     margin: 40px;
     font-weight: bolder;
     color: #AEAEAE;
@@ -122,14 +91,34 @@
     justify-content: space-between;
 }
 
-.in-quiz .questionf .question-textee {
+.quiz-results .questionf .info .left {
+    display: flex;
+    gap: 10px;
+}
+
+.quiz-results .CircularProgressbar {
+    margin-top: 35px;
+    width: 50px;
+    height: 50px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+}
+
+.quiz-results .expanded-question {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    justify-content: center;
+}
+
+.quiz-results .questionf .question-textee {
     margin-top: 35px;
     margin-left: 40px;
     margin-right: 40px;
     word-wrap: break-all;
 }
 
-.in-quiz .questionf .multiple-choice {
+.quiz-results .questionf .multiple-choice {
     display: grid;
     grid-template-columns: calc(50% - 10px) calc(50% - 10px);
     gap: 20px;
@@ -138,7 +127,7 @@
     place-items: center;
 }
 
-.in-quiz .questionf .choice {
+.quiz-results .questionf .choice {
     padding: 15px;
     padding-bottom: 30px;
     background-color: #27272A;
@@ -148,42 +137,54 @@
     border-radius: 20px;
 }
 
-.in-quiz .questionf .choice.selected {
-    background-color: #18A0FB;
+.quiz-results .questionf .choice.correct {
+    background-color: #A6FF86;
+    color: black;
 }
 
-.in-quiz .questionf .choice:hover {
-    background-color: #18A0FB;
-    cursor: pointer;
+.quiz-results .questionf .choice.wrong {
+    background-color: #FF4E2E;
 }
 
-.in-quiz .questionf .short-answer {
+.quiz-results .questionf .short-answer {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.in-quiz .questionf .question-answer {
+.quiz-results .questionf .question-answer {
     margin-top: 70px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.in-quiz .questionf .question-label {
+.quiz-results .questionf .question-label {
     margin-left: 40px;
     font-weight: bold;
     color: #3F3F46;
     font-size: 16px;
 }
 
-.in-quiz .questionf .short-answer Textarea {
+.quiz-results .questionf .short-answer .answer {
     resize: none;
     width: calc(100% - 120px);
+    min-height: 120px;
     background-color: #27272A;
-    border-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
     border-radius: 20px;
     font-family: 'Montserrat';
     font-size: 24px;
     padding: 20px;
     padding-bottom: 80px;
+}
+
+.quiz-results .questionf .short-answer .explanation {
+    resize: none;
+    width: calc(100% - 120px);
+    background-color: #27272A;
+    border-radius: 20px;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    padding: 20px;
 }

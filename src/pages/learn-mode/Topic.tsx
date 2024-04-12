@@ -108,7 +108,6 @@ function Topic() {
             const key = titleCase(topic)
             let sources: Set<string> = new Set();
             res.resources[0][key].forEach((object) => {
-                const pageSet: Set<number> = new Set(object.page_numbers);
                 if (object.page_numbers)
                     if (object.page_numbers.length > 1)
                         sources.add(object.source + `, Pages: ${object.page_numbers[0]}-${object.page_numbers[object.page_numbers.length-1]}`)

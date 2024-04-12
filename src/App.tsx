@@ -12,6 +12,7 @@ import Topic from './pages/learn-mode/Topic.tsx'
 import { Bounce, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useState } from 'react'
+import Results from './pages/quiz-mode/results.tsx'
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
               <Route path='/' element={<ChatMode />} />
               <Route path='/quizzes' element={<QuizMode />} />
               <Route path='/quiz/:id' element={<InQuiz />} />
+              <Route path='/results/:id' element={<Results />} />
             </Routes>
           </div>
         </div>

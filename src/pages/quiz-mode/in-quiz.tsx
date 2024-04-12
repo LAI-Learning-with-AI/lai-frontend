@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Textarea from 'react-expanding-textarea'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import { toast } from 'react-toastify';
 
 // define interface for quiz
 interface QuizState {
@@ -90,12 +91,10 @@ function InQuiz() {
             })
         })
         .then(response => response.json())
-        .then((res: QuizState) => {
-            setQuiz(res);
-            console.log(res);
-        })
+        .then(() => navigate(`/results/${id}`))
         .catch(error => {
             console.error(error);
+            toast.error('Failed to submit quiz')
         });
     }
 
