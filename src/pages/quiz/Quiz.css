@@ -16,48 +16,6 @@
     display: none; /* Hide the scrollbar for webkit-based browsers */
 }
 
-.in-quiz-header {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 96;
-    width: calc(100% - 140px);
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 1;
-    height: 100px;
-    background-color: #18181B;
-    border-bottom: 1px solid #555;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 32px;
-    font-weight:bold;
-    font-family:'Montserrat';
-}
-
-.in-quiz-header-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 50px;
-    font-size: 20px;
-}
-
-.in-quiz-header-buttons .icons {
-    display: flex;
-}
-
-.in-quiz-header-buttons .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 0px;
-    background-color: #27272A;
-    height: 60px;
-    width: 60px;
-    border-radius: 15px;
-}
-
 .in-quiz-footer {
     display: flex;
     position: fixed;

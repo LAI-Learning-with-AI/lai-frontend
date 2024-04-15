@@ -1,5 +1,5 @@
 import { ReactElement, useEffect } from "react";
-import './modal.css';
+import './QuizGenModal.css';
 
 interface ModalProps {
     open: boolean;

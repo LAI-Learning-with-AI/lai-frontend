@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import './question.css'
+import './ChatQuestionBox.css'
 
 interface QuestionProps {
     children: ReactNode;

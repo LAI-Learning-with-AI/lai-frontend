@@ -1,5 +1,5 @@
 import React from 'react';
-import './chat.css'
+import './ChatListing.css'
 
 interface Props {
     title: string;

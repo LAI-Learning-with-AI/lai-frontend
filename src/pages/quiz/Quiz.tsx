@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import './in-quiz.css'
+import './Quiz.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
@@ -7,11 +7,13 @@ import { useNavigate } from 'react-router-dom';
 import Textarea from 'react-expanding-textarea'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { toast } from 'react-toastify';
+import PageHeader from '../../components/PageHeader';
 
 // define interface for quiz
 interface QuizState {
     id: number;
     date: string;
+    name: string;
     questions: Question[];
 }
 
@@ -31,7 +33,7 @@ interface SubmissionState {
 
 function InQuiz() {
     // user
-    const { user } = useAuth0();
+    const { user, logout } = useAuth0();
     const navigate = useNavigate();
 
     // states
@@ -123,19 +125,11 @@ function InQuiz() {
 
     return (
         <div className='in-quiz'>
-            <div className="in-quiz-header">
-                Quiz {id}
-                <div className="in-quiz-header-buttons">
-                    <div className='icons'>
-                        <button className='icon'>
-                            <FontAwesomeIcon icon={faGear} />
-                        </button>
-                        <button className='icon'>
-                            <FontAwesomeIcon icon={faRightFromBracket} />
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <PageHeader
+                name={quiz?.name ? quiz?.name : 'Quiz'}
+                quizgen={false}
+                logout={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}
+            />
             <div className="questionf">
                 {quiz && (
                     quiz.questions.map((question, index) => (

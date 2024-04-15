@@ -7,6 +7,7 @@ import { faGear, faPlus, faRightFromBracket } from '@fortawesome/free-solid-svg-
 import { useEffect, useState } from 'react';
 import spinner from '../../assets/chat-loading.svg'
 import { toast } from 'react-toastify';
+import PageHeader from '../../components/PageHeader';
 
 // interface for retrieving explanation from backend
 interface ExplanationState {
@@ -139,20 +140,11 @@ function Topic() {
     
     return (
         <div className='learn-mode-topic'>
-            <div className='topic-header'>
-                {titleCase(topic)}
-                <div className="topic-header-buttons">
-                        <button className='create-quiz' onClick={() => {}}>Generate Quiz</button>
-                        <div className='icons'>
-                            <button className='icon'>
-                                <FontAwesomeIcon icon={faGear} />
-                            </button>
-                            <button className='icon' onClick={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}>
-                                <FontAwesomeIcon icon={faRightFromBracket} />
-                            </button>
-                        </div>
-                    </div>
-            </div>
+            <PageHeader
+                name={titleCase(topic)}
+                quizgen={true}
+                logout={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}
+            />
             <div className='topic-element first'>
                 <div className='topic-label'>
                     Explanation

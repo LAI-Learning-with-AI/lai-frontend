@@ -1,11 +1,12 @@
 import { withAuthenticationRequired, useAuth0 } from "@auth0/auth0-react";
-import './learn-mode.css'
+import './LearnMode.css'
 import { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faCircleChevronDown, faCircleChevronUp, faGear, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import PageHeader from "../../components/PageHeader";
 
 //define interface for topics
 interface TopicState {
@@ -191,19 +192,11 @@ function LearnMode() {
 
     return (
         <div className='learn-mode'>
-            <div className="learn-header">
-                    Learn
-                    <div className="learn-header-buttons">
-                        <div className='icons'>
-                            <button className='icon'>
-                                <FontAwesomeIcon icon={faGear} />
-                            </button>
-                            <button className='icon' onClick={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}>
-                                <FontAwesomeIcon icon={faRightFromBracket} />
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <PageHeader
+                name='Learn'
+                quizgen={false}
+                logout={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}
+            />
             <div className='chart-container pie'>
                 <Chart
                     chartType="PieChart"

@@ -1,4 +1,4 @@
-import './loading.css';
+import './LoadingModal.css';
 import spinner from '../../assets/loading.svg'
 
 interface LoadingProps {

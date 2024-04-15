@@ -1,5 +1,5 @@
 import React from 'react';
-import './quiz.css'
+import './QuizListing.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';

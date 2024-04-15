@@ -17,49 +17,6 @@
     display: none;
 }
 
-.learn-header {
-    display: flex;
-    position: fixed;
-    top: 0;
-    left: 96;
-    width: calc(100% - 140px);
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 1;
-    height: 100px;
-    background-color: #18181B;
-    border-bottom: 1px solid #555;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 32px;
-    font-weight:bold;
-    font-family:'Montserrat';
-    z-index: 55;
-}
-
-.learn-header-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 50px;
-    font-size: 20px;
-}
-
-.learn-header-buttons .icons {
-    display: flex;
-}
-
-.learn-header-buttons .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 0px;
-    background-color: #27272A;
-    height: 60px;
-    width: 60px;
-    border-radius: 15px;
-}
-
 .dropdown-container {
     display: flex;
     flex-direction: column;

@@ -1,14 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './quiz-mode.css';
+import './QuizListings.css';
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-import Quiz from '../../components/modes/quiz.tsx'
+import Quiz from '../../components/modes/quiz/QuizListing.tsx'
 import { faCommentDots, faClipboardCheck, faGear, faRightFromBracket, faChevronUp, faChevronDown, faRefresh, faDownload } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import Modal from '../../components/modes/modal.tsx';
-import Loading from '../../components/modes/loading.tsx';
-import Import from '../../components/modes/import.tsx';
+import Modal from '../../components/modals/QuizGenModal.tsx';
+import Loading from '../../components/modals/LoadingModal.tsx';
+import Import from '../../components/modals/QuizImportModal.tsx';
 import { toast } from 'react-toastify';
+import PageHeader from '../../components/PageHeader.tsx';
 
 interface QuizState {
     id: number;
@@ -122,6 +123,11 @@ function QuizMode() {
 
     return (
         <div className='quiz-mode'>
+            <PageHeader
+                name='Quiz'
+                quizgen={true}
+                logout={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}
+            />
             <div className="quiz-sidebar">
                 <Loading open={loading} />
                 <Import open={showImport} close={toggleImport} />
@@ -183,20 +189,6 @@ function QuizMode() {
                         </div>
                     </div>
                 </Modal>
-                <div className="quiz-header">
-                    Quiz
-                    <div className="quiz-header-buttons">
-                        <button className='create-quiz' onClick={() => {toggleModal(); console.log(selectedSettings); console.log(topics); console.log(number)}}>Create New Quiz</button>
-                        <div className='icons'>
-                            <button className='icon'>
-                                <FontAwesomeIcon icon={faGear} />
-                            </button>
-                            <button className='icon' onClick={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}>
-                                <FontAwesomeIcon icon={faRightFromBracket} />
-                            </button>
-                        </div>
-                    </div>
-                </div>
                 <div className='quiz-recommend-container'>
                     <div className="quiz-label-container">
                         <div className="quiz-label">

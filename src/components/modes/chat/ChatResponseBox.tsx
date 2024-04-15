@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import './response.css'
+import './ChatResponseBox.css'
 import { faThumbsUp, faThumbsDown, faRotateRight, faInfo } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './chat-mode.css';
-import Chat from '../../components/modes/chat.tsx'
-import Question from '../../components/modes/question.tsx';
+import './ChatMode.css';
+import Chat from '../../components/modes/chat/ChatListing.tsx'
+import Question from '../../components/modes/chat/ChatQuestionBox.tsx';
 import { faCommentDots, faArrowRight, faGear, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState, useRef  } from 'react'
-import Response from '../../components/modes/response.tsx';
+import Response from '../../components/modes/chat/ChatResponseBox.tsx';
 import Textarea from 'react-expanding-textarea'
 import spinner from '../../assets/chat-loading.svg'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
-import SpeechToText from '../../components/stt.tsx';
+import SpeechToText from '../../components/modes/chat/ChatSpeechToText.tsx';
 import Markdown from 'markdown-to-jsx';
 import { toast } from 'react-toastify';
 

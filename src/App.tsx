@@ -1,18 +1,17 @@
 import Navbar from './components/navbar/navbar.tsx'
-import ChatMode from './pages/chat-mode/chat-mode.tsx'
-import InQuiz from './pages/quiz-mode/in-quiz.tsx'
-import QuizMode from './pages/quiz-mode/quiz-mode.tsx'
+import ChatMode from './pages/chat/ChatMode.tsx'
+import InQuiz from './pages/quiz/Quiz.tsx'
+import QuizMode from './pages/quiz/QuizListings.tsx'
 import { BrowserRouter  as Router, Routes, Route } from 'react-router-dom'
-import SignUp from './pages/signup/signup.tsx'
-import Profile from './pages/profile.tsx'
+import SignUp from './pages/register/signup.tsx'
 import './App.css'
-import Login from './pages/signup/login.tsx'
-import LearnMode from './pages/learn-mode/learn-mode.tsx'
-import Topic from './pages/learn-mode/Topic.tsx'
+import Login from './pages/register/login.tsx'
+import LearnMode from './pages/learn/LearnMode.tsx'
+import Topic from './pages/learn/Topic.tsx'
 import { Bounce, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useState } from 'react'
-import Results from './pages/quiz-mode/results.tsx'
+import Results from './pages/quiz/QuizResults.tsx'
 
 
 function App() {
@@ -42,7 +41,6 @@ function App() {
               <Route path='/login' element={<Login />} />
               <Route path='/learn' element={<LearnMode />} />
               <Route path='/learn/:topic' element={<Topic />} />
-              <Route path='/profile' element={<Profile />} />
               <Route path='/' element={<ChatMode />} />
               <Route path='/quizzes' element={<QuizMode />} />
               <Route path='/quiz/:id' element={<InQuiz />} />
