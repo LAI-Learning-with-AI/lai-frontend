@@ -1,9 +1,6 @@
 .page-header {
     display: flex;
     position: fixed;
-    top: 0;
-    left: 96;
-    width: calc(100% - 140px);
     justify-content: space-between;
     align-items: center;
     flex-shrink: 1;
@@ -15,6 +12,22 @@
     font-size: 32px;
     font-weight:bold;
     font-family:'Montserrat';
+    z-index: 55;
+}
+
+.page-header.short {
+    width: calc(100% - 442px);
+}
+
+.page-header.normal {
+    width: calc(100% - 140px);
+}
+
+.page-header-name {
+    width: 75%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .page-header-buttons {
@@ -27,7 +40,6 @@
 
 .page-header-buttons .icons {
     display: flex;
-    gap: 10px;
 }
 
 .page-header-buttons .icon {

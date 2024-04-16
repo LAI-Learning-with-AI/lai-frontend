@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PageHeader from '../../components/PageHeader.tsx';
 import './ChatMode.css';
 import Chat from '../../components/modes/chat/ChatListing.tsx'
 import Question from '../../components/modes/chat/ChatQuestionBox.tsx';
-import { faCommentDots, faArrowRight, faGear, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faCommentDots, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState, useRef  } from 'react'
 import Response from '../../components/modes/chat/ChatResponseBox.tsx';
 import Textarea from 'react-expanding-textarea'
@@ -191,21 +192,12 @@ function ChatMode() {
                 </div>
             </div>
             <div className="chat-messages" ref={chatContainerRef}>
-                <div className="chat-header">
-                    <div className="chat-header-name">
-                        {chat?.chats[0] ? chat?.chats[0] : chat?.title }
-                    </div>
-                    <div className="chat-header-buttons">
-                        <div className='icons'>
-                            <button className='icon'>
-                                <FontAwesomeIcon icon={faGear} />
-                            </button>
-                            <button className='icon' onClick={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}>
-                                <FontAwesomeIcon icon={faRightFromBracket} />
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <PageHeader
+                    name={chat?.chats[0] ? chat?.chats[0] : ''}
+                    quizgen={false}
+                    logout={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}
+                    type={'short'}
+                />
                 <div className="message-container">
                     {chat && (
                         chat.chats.map((message, index) => (

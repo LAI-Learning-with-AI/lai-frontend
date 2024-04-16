@@ -144,6 +144,7 @@ function Topic() {
                 name={titleCase(topic)}
                 quizgen={true}
                 logout={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}
+                topic={titleCase(topic).toLowerCase()}
             />
             <div className='topic-element first'>
                 <div className='topic-label'>

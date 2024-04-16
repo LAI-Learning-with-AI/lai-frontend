@@ -24,57 +24,11 @@ function QuizMode() {
     const { user, logout } = useAuth0();
     const navigate = useNavigate();
     const [quizzes, setQuizzes] = useState<QuizState[]>([]);
-    const [topics, setTopics] = useState<string>('');
     const [showModal, setShowModal] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
     const [showImport, setShowImport] = useState<boolean>(false);
     const [recommended, setRecommended] = useState<boolean>(false);
-    const [number, setNumber] = useState<number>(20);
-    const [selectedSettings, setSelectedSettings] = useState<string[]>([]);
     const [randomQuizzes, setRandomQuizzes] = useState<QuizState[]>([]);
-
-    // function to handle toggle settings for the create quizzes modal
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>, setting: string) => {
-        const isChecked = event.target.checked;
-        if (isChecked) setSelectedSettings(prevSettings => [...prevSettings, setting]);
-        else setSelectedSettings(prevSettings => prevSettings.filter(item => item !== setting));
-    };
-
-    // function to make a POST request to backend to create a new quiz in the DB for user
-    const createQuiz = () => {
-        // loading screen
-        setLoading(true);
-        // request
-        fetch(`${import.meta.env.VITE_SERVER}/generatequiz`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "userId": user?.sub,
-                "name": `Quiz ${quizzes.length+1}`,
-                "numberOfQuestions": number,
-                "types": selectedSettings.join(', '),
-                "topics": topics
-            })
-        })
-        .then(response => response.json())
-        .then((res) => {
-            // remove loading screen
-            setLoading(false);
-            toast.success('Quiz generated successfully');
-
-            // move into quiz
-            navigate(`/quiz/${res.quiz_id}`)
-        })
-        .catch(error => {
-            // remove loading screen
-            setLoading(false);
-            toast.error('Failed to generate quiz');
-
-            console.error(error);
-        });
-    }
 
     // function to toggle modal state
     function toggleModal() {
@@ -131,64 +85,6 @@ function QuizMode() {
             <div className="quiz-sidebar">
                 <Loading open={loading} />
                 <Import open={showImport} close={toggleImport} />
-                <Modal open={showModal} close={toggleModal}>
-                    <div className='modal-content'>
-                        <div className='modal-heading'>
-                            <div className='modal-headers'>
-                                <div className='modal-name-h1'>
-                                    Quiz {quizzes.length+1}
-                                </div>
-                                <div className='modal-name-h2'>
-                                    Set up your quiz
-                                </div>
-                            </div>
-                            <FontAwesomeIcon className='modal-icon' icon={faClipboardCheck} />
-                        </div>
-                        <div className='modal-settings'>
-                            <div className='modal-setting'>
-                                Questions
-                                <label className="number-box">
-                                    <input type='number' onChange={(e) => setNumber(parseInt(e.target.value))} defaultValue='20' min='0' max='50' />
-                                </label>
-                            </div>
-                            <div className='modal-setting'>
-                                True/False
-                                <label className="switch">
-                                    <input type="checkbox" onChange={(e) => handleChange(e, 'TRUE_FALSE')} />
-                                    <span className="slider round" />
-                                </label>
-                            </div>
-                            <div className='modal-setting'>
-                                Multiple Choice
-                                <label className="switch">
-                                    <input type="checkbox" onChange={(e) => handleChange(e, 'MULTIPLE_CHOICE')} />
-                                    <span className="slider round" />
-                                </label>
-                            </div>
-                            <div className='modal-setting'>
-                                Short Answer
-                                <label className="switch">
-                                    <input type="checkbox" onChange={(e) => handleChange(e, 'SHORT_ANSWER')} />
-                                    <span className="slider round" />
-                                </label>
-                            </div>
-                            <div className='modal-setting'>
-                                Coding
-                                <label className="switch">
-                                    <input type="checkbox" onChange={(e) => handleChange(e, 'CODING')} />
-                                    <span className="slider round" />
-                                </label>
-                            </div>
-                        </div>
-                        <div className='modal-input'>
-                            Quiz Topics
-                            <textarea value={topics} onChange={(e) => setTopics(e.target.value)} placeholder='topic1, topic2, topic3, ...' />
-                        </div>
-                        <div className='modal-button'>
-                            <button className='submit' onClick={() => { toggleModal(); createQuiz(); }}>Start Quiz</button>
-                        </div>
-                    </div>
-                </Modal>
                 <div className='quiz-recommend-container'>
                     <div className="quiz-label-container">
                         <div className="quiz-label">

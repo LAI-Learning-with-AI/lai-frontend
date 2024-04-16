@@ -12,13 +12,13 @@ nav {
     z-index: 999;
 }
 
-nav .icon {
+.icon {
     margin: 25px;
     height: 30px;
     width: 30px;
 }
 
-nav .modes {
+.modes {
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -26,7 +26,7 @@ nav .modes {
     margin-top: 25px;
 }
 
-nav .mode {
+.mode {
     display: flex;
     align-items: center;
     justify-content: left;
@@ -43,7 +43,7 @@ nav .mode {
     width: 192px;
 }
 
-nav .label {
+.label {
     opacity:0;
 }
 

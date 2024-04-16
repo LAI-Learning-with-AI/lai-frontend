@@ -1,30 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PageHeader.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLightbulb, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import QuizGenModal from './modals/QuizGenModal';
 
 interface Props {
     name: string;
     quizgen: boolean;
     logout: () => void;
+    type?: 'normal' | 'short';
+    topic?: string;
 }
 
-const PageHeader: React.FC<Props> = ({ name, quizgen, logout } ) => {
+const PageHeader: React.FC<Props> = ({ name, quizgen, logout, type='normal', topic=''} ) => {
+    const [quiz, setQuiz] = useState<boolean>(false);
+
     return (
-        <div className='page-header'>
-            {name}
-            <div className="page-header-buttons">
-                {quizgen && <button className='create-quiz' onClick={() => {}}>Generate Quiz</button> }
-                <div className='icons'>
-                    <button className='icon'>
-                        <FontAwesomeIcon icon={faLightbulb} />
-                    </button>
-                    <button className='icon' onClick={() => logout()}>
-                        <FontAwesomeIcon icon={faRightFromBracket} />
-                    </button>
+        <>
+            {quizgen && 
+                <QuizGenModal
+                    open={quiz}
+                    close={() => setQuiz(false)}
+                    name={'Untitled Chat'}
+                    topic={topic}
+                />
+            }
+            <div className={`page-header ${type}`}>
+                <div className='page-header-name'>{name}</div>
+                <div className="page-header-buttons">
+                    {quizgen && <button className='create-quiz' onClick={() => {setQuiz(true)}}>Generate Quiz</button> }
+                    <div className='icons'>
+                        <button className='icon'>
+                            <FontAwesomeIcon icon={faLightbulb} />
+                        </button>
+                        <button className='icon' onClick={() => logout()}>
+                            <FontAwesomeIcon icon={faRightFromBracket} />
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
