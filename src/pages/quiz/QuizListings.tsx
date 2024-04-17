@@ -2,10 +2,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './QuizListings.css';
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import Quiz from '../../components/modes/quiz/QuizListing.tsx'
-import { faCommentDots, faClipboardCheck, faGear, faRightFromBracket, faChevronUp, faChevronDown, faRefresh, faDownload } from '@fortawesome/free-solid-svg-icons'
+import { faCommentDots, faChevronUp, faChevronDown, faRefresh, faDownload } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import Modal from '../../components/modals/QuizGenModal.tsx';
 import Loading from '../../components/modals/LoadingModal.tsx';
 import Import from '../../components/modals/QuizImportModal.tsx';
 import { toast } from 'react-toastify';
@@ -24,16 +23,10 @@ function QuizMode() {
     const { user, logout } = useAuth0();
     const navigate = useNavigate();
     const [quizzes, setQuizzes] = useState<QuizState[]>([]);
-    const [showModal, setShowModal] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
     const [showImport, setShowImport] = useState<boolean>(false);
     const [recommended, setRecommended] = useState<boolean>(false);
     const [randomQuizzes, setRandomQuizzes] = useState<QuizState[]>([]);
-
-    // function to toggle modal state
-    function toggleModal() {
-        setShowModal(!showModal);
-    }
 
     // function to toggle import state
     const toggleImport = () => {

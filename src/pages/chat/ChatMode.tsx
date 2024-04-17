@@ -162,29 +162,11 @@ function ChatMode() {
                 </div>
                 <div className="chats">
                     {filteredChats.slice().reverse().map((chat) => {
-                        // get date difference
-                        const creation = new Date(chat.created_at);
-                        const current = new Date();
-                        const difference = current.getTime() - creation.getTime();
-                        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-
-                        // format
-                        let date = '';
-                        if (days > 0)
-                            date += days + 'd';
-                        else if(hours > 0)
-                            date += hours + 'h';
-                        else if (minutes > 0 || date === '')
-                            date += minutes + 'm';
-
-                        // return chat object
                         return (
                             <Chat
                                 title={chat.chats[0] ? chat.chats[0] : chat.title}
                                 description={chat.chats[chat.chats.length - 1] ? chat.chats[chat.chats.length - 1] : chat.description}
-                                date={date}
+                                date={chat.created_at}
                                 onClick={() => setChat(chat)}
                             />
                         );

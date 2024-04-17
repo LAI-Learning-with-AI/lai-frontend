@@ -1,7 +1,5 @@
 import { useParams } from 'react-router-dom';
 import './QuizResults.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
@@ -25,10 +23,6 @@ interface Question {
     score: number;
     type: "TRUE_FALSE" | "MULTIPLE_CHOICE" | "SHORT_ANSWER" | "CODING";
     user_answer: string;
-}
-
-interface SubmissionState {
-    questions: Question[];
 }
 
 function Results() {

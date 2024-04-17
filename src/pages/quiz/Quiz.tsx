@@ -1,7 +1,5 @@
 import { useParams } from 'react-router-dom';
 import './Quiz.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Textarea from 'react-expanding-textarea'
