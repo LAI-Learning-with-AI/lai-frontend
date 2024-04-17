@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PageHeader from '../../components/PageHeader.tsx';
 import './ChatMode.css';
 import Chat from '../../components/modes/chat/ChatListing.tsx'
-import Question from '../../components/modes/chat/ChatQuestionBox.tsx';
 import { faCommentDots, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState, useRef  } from 'react'
 import Response from '../../components/modes/chat/ChatResponseBox.tsx';
@@ -184,11 +183,11 @@ function ChatMode() {
                     {chat && (
                         chat.chats.map((message, index) => (
                             index % 2 === 0 ? (
-                                <Question>
+                                <div className='question-text'>
                                     <Markdown>
                                         {message}
                                     </Markdown>
-                                </Question>
+                                </div>
                             ) : (
                                 <Response>
                                     <Markdown>

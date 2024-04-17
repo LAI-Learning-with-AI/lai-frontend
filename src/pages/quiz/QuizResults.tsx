@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import PageHeader from '../../components/PageHeader';
+import Progress from '../../components/Progress';
 
 // define interface for quiz
 interface QuizState {
@@ -68,15 +69,10 @@ function Results() {
                 {quiz && (
                     quiz.questions.map((question, index) => (
                         <div className='expanded-question'>
-                            <CircularProgressbar
-                                value={question.score*100}
-                                text={`${question.score*100}`}
-                                styles={buildStyles({
-                                    textColor: "#A6FF86",
-                                    pathColor: "#A6FF86",
-                                    trailColor: "#FF4E2E",
-                                    textSize: "30px"
-                            })} />
+                            <Progress
+                                type='small'
+                                score={question.score}
+                            />
                             <div className='questione'>
                                 <div className='info'>
                                     <div className='left'>

@@ -7,6 +7,8 @@ interface ResponseProps {
     children: ReactNode;
 }
 
+// todo: implement functionality for liking, disliking, and sources
+
 const Response: React.FC<ResponseProps> = ( { children }) => {
     return (
         <div className='response'>      

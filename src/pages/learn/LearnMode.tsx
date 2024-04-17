@@ -92,18 +92,12 @@ function LearnMode() {
                 type='line'
                 data={chartData}
             />
-            <Dropdown 
-                category={"Mastered"}
-                topics={topics}
-            />
-            <Dropdown 
-                category={"Struggling"}
-                topics={topics}
-            />
-            <Dropdown 
-                category={"Learning"}
-                topics={topics}
-            />
+            {['Mastered', 'Struggling', 'Learning'].map(category => (
+                <Dropdown 
+                    category={category}
+                    topics={topics}
+                />
+            ))}
         </div>
     )
 }
