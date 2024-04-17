@@ -11,7 +11,7 @@ interface Props {
 const Progress: React.FC<Props> = ({ type, score } ) => {
     let fontcolor = "#A6FF86"
     console.log(score)
-    if(score < 0.70) {
+    if(score < 0.50) {
         fontcolor = "#FF4E2E"
     }
 

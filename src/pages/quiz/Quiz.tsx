@@ -6,6 +6,7 @@ import Textarea from 'react-expanding-textarea'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { toast } from 'react-toastify';
 import PageHeader from '../../components/PageHeader';
+import QuizQuestions from '../../components/modes/quiz/QuizQuestions';
 
 // define interface for quiz
 interface QuizState {
@@ -128,37 +129,13 @@ function InQuiz() {
                 quizgen={false}
                 logout={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}
             />
-            <div className="questionf">
-                {quiz && (
-                    quiz.questions.map((question, index) => (
-                        <div className='questione'>
-                            <div className='info'>
-                                <div>{question.type.toLowerCase()}</div>
-                                <div>{index+1} of {quiz?.questions.length}</div>
-                            </div>
-                            <div className='question-textee'>
-                                {question.question}
-                            </div>
-                            <div className='question-answer'>
-                                <div className='question-label'>Your answer</div>
-                                {question.choices !== null ? (
-                                    <div className='multiple-choice'>
-                                        {question.choices.split('@').map((choice, choiceIndex) => (
-                                            <div key={choiceIndex} className={`choice ${selectedChoices[index] === choiceIndex ? 'selected' : ''}`} onClick={() => handleChoiceClick(index, choiceIndex)}>
-                                                {choice}
-                                            </div>
-                                        ))}
-                                    </div>
-                                ) : (
-                                    <div className='short-answer'>
-                                        <Textarea placeholder='Type answer here...' onChange={(e) => handleTextAnswerChange(index, e.target.value)}></Textarea>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    ))
-                )}
-            </div>
+            <QuizQuestions 
+                quiz={quiz}
+                selections={selectedChoices}
+                updateSelections={setSelectedChoices}
+                text={textAnswers}
+                updateText={setTextAnswers}
+            />
             <div className="in-quiz-footer">
                 <div className='text'>{selectedChoices.filter(choice => choice !== null && choice !== undefined).length + textAnswers.filter(answer => answer !== '' && answer).length} of {quiz?.questions.length} answered</div>
                 <button className='submit-quiz' onClick={() => handleSubmit()}>Submit</button>

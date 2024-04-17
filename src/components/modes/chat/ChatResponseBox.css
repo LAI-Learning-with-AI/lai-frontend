@@ -43,7 +43,7 @@
     border-radius: 15px;
 }
 
-.question-text {
+.response .question-text {
     display: flex;
     flex-direction: column;
     width: 50%;
