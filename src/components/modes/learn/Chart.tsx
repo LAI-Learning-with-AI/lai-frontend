@@ -47,8 +47,8 @@ const SummaryChart: React.FC<Props> = ({ type, data } ) => {
         colors: ['#A6FF86', '#FF4E2E', '#FFFF4E']
     };
 
-    // options for the linechart
-    const lineOptions = {
+    // options for the scatter chart
+    const scatterOptions = {
         lineWidth: 5,
         interpolateNulls: true,
         hAxis: { 
@@ -156,11 +156,11 @@ const SummaryChart: React.FC<Props> = ({ type, data } ) => {
                     options={pieOptions}
                 /> :
                 <Chart
-                    chartType="LineChart"
+                    chartType="ScatterChart"
                     width="100%"
                     height="400px"
                     data={formatLineChartData(data as ChartData)}
-                    options={lineOptions}
+                    options={scatterOptions}
                 />
             }
         </div>

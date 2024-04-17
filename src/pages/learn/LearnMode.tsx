@@ -89,7 +89,7 @@ function LearnMode() {
                 data={topics}
             />
             <SummaryChart
-                type='line'
+                type='scatter'
                 data={chartData}
             />
             {['Mastered', 'Struggling', 'Learning'].map(category => (
