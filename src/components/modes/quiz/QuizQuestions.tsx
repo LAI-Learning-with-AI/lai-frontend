@@ -51,6 +51,12 @@ const QuizQuestions: React.FC<Props> = ({ quiz, type, selections, updateSelectio
 
     return (
         <div className="questions-container">
+            {type === 'graded' && (
+                <Progress 
+                    score={quiz ? quiz.score : 0.0}
+                    type={'big'}
+                />
+            )}
             {quiz && (
                 quiz.questions.map((question, index) => (
                     <div className='expanded-question'>

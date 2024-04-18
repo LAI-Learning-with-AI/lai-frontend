@@ -16,7 +16,7 @@ const Progress: React.FC<Props> = ({ type, score } ) => {
     }
 
     return (
-        <div className='progress-icon'>
+        <div className={`progress-icon ${type}`}>
             <CircularProgressbar
                 value={score*100}
                 text={`${score*100}`}
