@@ -16,6 +16,7 @@
 }
 
 .page-header.short {
+    left: 402px;
     width: calc(100% - 442px);
 }
 
