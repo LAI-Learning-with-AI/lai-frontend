@@ -74,7 +74,7 @@ const Quiz: React.FC<Props> = ({ name, id, topics, score, onClick } ) => {
                             <FontAwesomeIcon icon={faRotateRight} />
                         </button>
                         <Progress
-                            type='big'
+                            type='small'
                             score={score}
                         />
                     </div>

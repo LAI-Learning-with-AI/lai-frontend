@@ -4,7 +4,7 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import "react-circular-progressbar/dist/styles.css";
 
 interface Props {
-    type: string;
+    type: 'small' | 'big';
     score: number;
 }
 

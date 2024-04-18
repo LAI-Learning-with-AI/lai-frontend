@@ -3,7 +3,7 @@ import './Topic.css'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Markdown from 'markdown-to-jsx'
-import { faGear, faPlus, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import spinner from '../../assets/chat-loading.svg'
 import { toast } from 'react-toastify';
