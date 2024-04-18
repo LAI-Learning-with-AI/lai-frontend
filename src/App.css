@@ -28,6 +28,7 @@ button {
     --description: #27272A;
     --background: #E0E0E0;
     --alt_backgorund: #E0E0E0;
+    --green_bg: #1E1E1E;
   }
   
 /* Dark Mode */
@@ -43,4 +44,5 @@ button {
     --description: #AEAEAE;
     --background: #3F3F46;
     --alt_background: #1B1B1B;
+    --green_bg: #1E1E1E;
 }

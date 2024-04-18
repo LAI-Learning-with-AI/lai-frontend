@@ -28,6 +28,7 @@
 }
 
 .questions-container .question-text {
+    color: var(--regular);
     margin-top: 35px;
     margin-left: 40px;
     margin-right: 40px;
@@ -46,6 +47,7 @@
 .questions-container .choice {
     padding: 15px;
     padding-bottom: 30px;
+    color: var(--regular);
     background-color: var(--submain);
     border: 1px solid var(--heading);
     min-height: 50px;
@@ -83,6 +85,7 @@
 
 .questions-container .short-answer Textarea {
     resize: none;
+    color: var(--regular);
     width: calc(100% - 120px);
     background-color: var(--submain);
     border-color: var(--heading);
@@ -94,6 +97,7 @@
 }
 
 .questions-container .graded-choice {
+    color: var(--regular);
     padding: 15px;
     padding-bottom: 30px;
     background-color: var(--submain);
@@ -120,6 +124,7 @@
 }
 
 .questions-container .graded-short-answer {
+    color: var(--regular);
     width: 100%;
     display: flex;
     justify-content: center;

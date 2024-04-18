@@ -23,7 +23,6 @@ function QuizMode() {
     const { user, logout } = useAuth0();
     const navigate = useNavigate();
     const [quizzes, setQuizzes] = useState<QuizState[]>([]);
-    const [loading, setLoading] = useState<boolean>(false);
     const [showImport, setShowImport] = useState<boolean>(false);
     const [recommended, setRecommended] = useState<boolean>(false);
     const [randomQuizzes, setRandomQuizzes] = useState<QuizState[]>([]);
@@ -76,7 +75,6 @@ function QuizMode() {
                 logout={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}
             />
             <div className="quiz-sidebar">
-                <Loading open={loading} />
                 <Import open={showImport} close={toggleImport} />
                 <div className='quiz-recommend-container'>
                     <div className="quiz-label-container">
@@ -95,7 +93,7 @@ function QuizMode() {
                     </div>
                     <div className={`recommended-quizzes ${recommended ? "enable" : "disable"}`}>
                         {randomQuizzes.map((quiz) => (
-                            <Quiz name={quiz.topics} topics={"Recommended by 1 teacher and 5 students"} score={null} onClick={() => navigate(`/quiz/${quiz.id}`)} />
+                            <Quiz name={quiz.topics} id={quiz.id} topics={"Recommended by 1 teacher and 5 students"} score={null} onClick={() => navigate(`/quiz/${quiz.id}`)} />
                         ))}
                     </div>
                 </div>
@@ -113,7 +111,7 @@ function QuizMode() {
                 </div>
                 <div className="quizzes">
                     {quizzes.map((quiz) => (
-                        <Quiz name={quiz.name} topics={quiz.topics} score={quiz.score} onClick={() => {
+                        <Quiz name={quiz.name} id={quiz.id} topics={quiz.topics} score={quiz.score} onClick={() => {
                             if (quiz.score)
                                 navigate(`/results/${quiz.id}`)
                             else navigate(`/quiz/${quiz.id}`)
