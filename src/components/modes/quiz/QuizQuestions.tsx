@@ -1,7 +1,5 @@
 import React from 'react';
 import './QuizQuestions.css'
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import "react-circular-progressbar/dist/styles.css";
 import Textarea from 'react-expanding-textarea';
 import Progress from '../../Progress';
 

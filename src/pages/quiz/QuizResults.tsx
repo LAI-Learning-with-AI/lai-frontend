@@ -1,11 +1,8 @@
 import { useParams } from 'react-router-dom';
 import './QuizResults.css'
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import PageHeader from '../../components/PageHeader';
-import Progress from '../../components/Progress';
 import QuizQuestions from '../../components/modes/quiz/QuizQuestions';
 
 // define interface for quiz
@@ -31,7 +28,6 @@ interface Question {
 function Results() {
     // user
     const { user, logout } = useAuth0();
-    const navigate = useNavigate();
 
     // states
     const [quiz, setQuiz] = useState<QuizState>();

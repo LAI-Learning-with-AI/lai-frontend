@@ -5,7 +5,6 @@ import Quiz from '../../components/modes/quiz/QuizListing.tsx'
 import { faCommentDots, faChevronUp, faChevronDown, faRefresh, faDownload } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import Loading from '../../components/modals/LoadingModal.tsx';
 import Import from '../../components/modals/QuizImportModal.tsx';
 import { toast } from 'react-toastify';
 import PageHeader from '../../components/PageHeader.tsx';

@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import './Quiz.css'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Textarea from 'react-expanding-textarea'
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { toast } from 'react-toastify';
 import PageHeader from '../../components/PageHeader';

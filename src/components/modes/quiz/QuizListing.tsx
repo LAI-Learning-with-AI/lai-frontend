@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import './QuizListing.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import "react-circular-progressbar/dist/styles.css";
 import Progress from '../../Progress';
 import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
