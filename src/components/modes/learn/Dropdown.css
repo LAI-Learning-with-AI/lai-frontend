@@ -23,6 +23,17 @@
     font-weight: 500;
 }
 
+.dropdown .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.more-info:hover {
+    cursor: help;
+}
+
 .dropdown-content.open {
     display: flex;
     gap: 5px;
@@ -45,4 +56,28 @@
     margin: 0;
     font: inherit;
     text-align: left;
+}
+
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    visibility: hidden;
+    background-color: var(--main);
+    width: 600px;
+    color: white;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: calc(100% + 10px); /* Position to the right of the icon */
+    transform: translateY(-50%);
+}
+
+.tooltip-container:hover .tooltip {
+    visibility: visible;
 }

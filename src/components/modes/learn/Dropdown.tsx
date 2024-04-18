@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Dropdown.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faCircleChevronUp, faCircleChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faCircleChevronUp, faCircleChevronDown, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 //define interface for topics
@@ -15,9 +15,10 @@ interface TopicState {
 interface Props {
     category: string;
     topics: TopicState[];
+    description: string;
 }
 
-const Dropdown: React.FC<Props> = ({ category, topics } ) => {
+const Dropdown: React.FC<Props> = ({ category, topics, description } ) => {
     // toggle for the dropdown
     const [open, setOpen] = useState<boolean>(false);
     const toggleDropdown = () => {
@@ -35,7 +36,13 @@ const Dropdown: React.FC<Props> = ({ category, topics } ) => {
     return (
         <div className='dropdown-container'>
             <button className='dropdown' onClick={() => toggleDropdown()}>
-                {category}
+                <div className='left'>
+                    {category}
+                    <div className="tooltip-container">
+                        <FontAwesomeIcon className='more-info' icon={faQuestionCircle} />
+                        <div className="tooltip">{description}</div>
+                    </div>
+                </div>
                 <FontAwesomeIcon icon={!open ? faCircleChevronUp: faCircleChevronDown} />
             </button>
             <div className={`dropdown-content ${!open ? 'open' : 'closed'}`}>
