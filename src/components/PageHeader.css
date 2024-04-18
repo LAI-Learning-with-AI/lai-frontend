@@ -17,12 +17,12 @@
 }
 
 .page-header.short {
-    left: 402px;
-    width: calc(100% - 442px);
+    left: 397px;
+    width: calc(100% - 437px);
 }
 
 .page-header.normal {
-    width: calc(100% - 140px);
+    width: calc(100% - 135px);
 }
 
 .page-header-name {

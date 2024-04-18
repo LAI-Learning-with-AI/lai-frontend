@@ -5,6 +5,7 @@
   width: 100%;
   height: 100%;
   background: var(--modal_bg);
+  color: var(--regular);
   z-index: 1000;
 }
 
@@ -62,8 +63,8 @@
   padding-top: 20px;
   padding-bottom: 20px;
   gap: 20px;
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
+  border-top: 1px solid var(--regular);
+  border-bottom: 1px solid var(--regular);
 }
 
 .modal-setting {
@@ -109,7 +110,7 @@
   background-color: var(--submain);
   height: 100px;
   resize: none;
-  border-color: var(--regular);
+  border-color: var(--heading);
   border-radius: 20px;
   padding: 20px;
   color: var(--regular);

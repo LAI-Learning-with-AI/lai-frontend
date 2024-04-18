@@ -3,6 +3,7 @@ import './PageHeader.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLightbulb, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import QuizGenModal from './modals/QuizGenModal';
+import { useTheme } from '../App';
 
 interface Props {
     name: string;
@@ -15,6 +16,7 @@ interface Props {
 const PageHeader: React.FC<Props> = ({ name, quizgen, logout, type='normal', topic=''} ) => {
     // modal toggle state for quiz gen modal
     const [quiz, setQuiz] = useState<boolean>(false);
+    const { toggleTheme } = useTheme();
 
     // toggle light theme
 
@@ -33,7 +35,7 @@ const PageHeader: React.FC<Props> = ({ name, quizgen, logout, type='normal', top
                 <div className="page-header-buttons">
                     {quizgen && <button className='create-quiz' onClick={() => {setQuiz(true)}}>Generate Quiz</button> }
                     <div className='icons'>
-                        <button className='icon' onClick={() => document.documentElement.setAttribute('data-theme', 'dark')}>
+                        <button className='icon' onClick={() => toggleTheme()}>
                             <FontAwesomeIcon icon={faLightbulb} />
                         </button>
                         <button className='icon' onClick={() => logout()}>

@@ -11,8 +11,10 @@
 
 .chart-container.pie {
     margin-top: 140px;
+    color: var(--main);
 }
 
 .chart-container.scatter {
     padding-bottom: 40px;
+    color: var(--main);
 }

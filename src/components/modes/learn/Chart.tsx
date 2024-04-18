@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Chart.css'
 import Chart from 'react-google-charts';
+import { useTheme } from '../../../App';
 
 // interface for input
 interface Props {
@@ -25,6 +26,12 @@ interface ChartData {
 }
 
 const SummaryChart: React.FC<Props> = ({ type, data } ) => {
+    // use theme context
+    const { theme } = useTheme();
+    console.log(theme);
+    
+    const fontColor = theme === 'light' ? '#18181B' : '#FFFFFF'
+
     // options for the piechart
     const pieOptions = {
         backgroundColor: "transparent",
@@ -33,7 +40,7 @@ const SummaryChart: React.FC<Props> = ({ type, data } ) => {
         legend: {
             alignment: 'center',
             textStyle: {
-                color: 'var(--main)',
+                color: fontColor,
                 fontName: 'Montserrat',
                 fontSize: 24
             }
@@ -54,12 +61,12 @@ const SummaryChart: React.FC<Props> = ({ type, data } ) => {
         hAxis: { 
             title: 'Date',
             textStyle: {
-                color: 'var(--main)',
+                color: fontColor,
                 fontName: 'Montserrat',
                 fontSize: 12
             },
             titleTextStyle: {
-                color: 'var(--main)',
+                color: fontColor,
                 fontName: 'Montserrat',
                 fontSize: 16
             }
@@ -67,12 +74,12 @@ const SummaryChart: React.FC<Props> = ({ type, data } ) => {
         vAxis: { 
             title: 'Average Score',
             textStyle: {
-                color: 'var(--main)',
+                color: fontColor,
                 fontName: 'Montserrat',
                 fontSize: 12
             },
             titleTextStyle: {
-                color: 'var(--main)',
+                color: fontColor,
                 fontName: 'Montserrat',
                 fontSize: 16
             }
@@ -82,7 +89,7 @@ const SummaryChart: React.FC<Props> = ({ type, data } ) => {
             position: 'bottom',
             alignment: 'center',
             textStyle: {
-                color: 'var(--main)',
+                color: fontColor,
                 fontName: 'Montserrat',
                 fontSize: 16
             }

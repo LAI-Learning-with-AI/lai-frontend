@@ -50,6 +50,7 @@
 
 .topic-label {
     font-weight: bold;
+    color: var(--regular);
     font-size: 24px;
 }
 

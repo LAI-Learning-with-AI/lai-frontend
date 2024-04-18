@@ -47,7 +47,7 @@
     padding: 15px;
     padding-bottom: 30px;
     background-color: var(--submain);
-    border: 1px solid var(--main);
+    border: 1px solid var(--heading);
     min-height: 50px;
     width: calc(100% - 30px);
     border-radius: 20px;
@@ -85,7 +85,7 @@
     resize: none;
     width: calc(100% - 120px);
     background-color: var(--submain);
-    border-color: var(--main);
+    border-color: var(--heading);
     border-radius: 20px;
     font-family: 'Montserrat';
     font-size: 24px;

@@ -59,7 +59,7 @@ nav {
     transition-delay: 0.2s;
 }
 
-nav a:hover .mode {
+nav .navigate:hover .mode {
     display: flex;
     background-color: var(--interactable);
 }
