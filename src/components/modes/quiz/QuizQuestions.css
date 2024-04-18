@@ -92,3 +92,59 @@
     padding: 20px;
     padding-bottom: 80px;
 }
+
+.questions-container .graded-choice {
+    padding: 15px;
+    padding-bottom: 30px;
+    background-color: var(--submain);
+    border: 1px solid var(--heading);
+    height: 50px;
+    width: 95%;
+    border-radius: 20px;
+}
+
+.questions-container .graded-choice.correct {
+    background-color: #A6FF86;
+    color: black;
+}
+
+.questions-container .graded-choice.wrong {
+    background-color: #FF4E2E;
+}
+
+.questions-container .expanded-question {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    justify-content: center;
+}
+
+.questions-container .graded-short-answer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.questions-container .graded-short-answer .answer {
+    resize: none;
+    width: calc(100% - 120px);
+    min-height: 120px;
+    background-color: var(--submain);
+    border: 1px solid var(--heading);
+    border-radius: 20px;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    padding: 20px;
+    padding-bottom: 80px;
+}
+
+.questions-container .graded-short-answer .explanation {
+    resize: none;
+    width: calc(100% - 120px);
+    background-color: var(--submain);
+    border-radius: 20px;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    padding: 20px;
+}

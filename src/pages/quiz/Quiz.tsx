@@ -13,6 +13,7 @@ interface QuizState {
     id: number;
     date: string;
     name: string;
+    score: number;
     questions: Question[];
 }
 
@@ -22,6 +23,7 @@ interface Question {
     answers: string;
     choices: string | null;
     question: string;
+    score: number;
     type: "TRUE_FALSE" | "MULTIPLE_CHOICE" | "SHORT_ANSWER" | "CODING";
     user_answer: string;
 }
@@ -40,20 +42,6 @@ function InQuiz() {
     let { id } = useParams<{ id: string }>();
     const [selectedChoices, setSelectedChoices] = useState<(number | null)[]>(Array(quiz?.questions.length).fill(null));
     const [textAnswers, setTextAnswers] = useState<string[]>(Array(quiz?.questions.length).fill(undefined));
-
-    // function to store multiple choice questions
-    const handleChoiceClick = (questionIndex: number, choiceIndex: number) => {
-        const newSelectedChoices = [...selectedChoices];
-        newSelectedChoices[questionIndex] = choiceIndex === selectedChoices[questionIndex] ? null : choiceIndex;
-        setSelectedChoices(newSelectedChoices);
-    };
-
-    // function to store short answer questions
-    const handleTextAnswerChange = (questionIndex: number, answer: string) => {
-        const newTextAnswers = [...textAnswers];
-        newTextAnswers[questionIndex] = answer;
-        setTextAnswers(newTextAnswers);
-    };
 
     // function to handle submit button press
     const handleSubmit = () => {
@@ -131,6 +119,7 @@ function InQuiz() {
             />
             <QuizQuestions 
                 quiz={quiz}
+                type={'quiz'}
                 selections={selectedChoices}
                 updateSelections={setSelectedChoices}
                 text={textAnswers}

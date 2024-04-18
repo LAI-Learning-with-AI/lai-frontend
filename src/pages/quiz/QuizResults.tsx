@@ -6,12 +6,14 @@ import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import PageHeader from '../../components/PageHeader';
 import Progress from '../../components/Progress';
+import QuizQuestions from '../../components/modes/quiz/QuizQuestions';
 
 // define interface for quiz
 interface QuizState {
     id: number;
     name: string;
     date: string;
+    score: number;
     questions: Question[];
 }
 
@@ -65,61 +67,10 @@ function Results() {
                 quizgen={false}
                 logout={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}
             />
-            <div className="questionf">
-                {quiz && (
-                    quiz.questions.map((question, index) => (
-                        <div className='expanded-question'>
-                            <Progress
-                                type='small'
-                                score={question.score}
-                            />
-                            <div className='questione'>
-                                <div className='info'>
-                                    <div className='left'>
-                                        <div>{question.type.toLowerCase()}</div>
-                                    </div>
-                                    <div>{index+1} of {quiz?.questions.length}</div>
-                                </div>
-                                <div className='question-textee'>
-                                    {question.question}
-                                </div>
-                                <div className='question-answer'>
-                                    <div className='question-label'>Your answer</div>
-                                    {question.choices !== null ? (
-                                        <div className='multiple-choice'>
-                                            {question.choices.split('@').map((choice, choiceIndex) => { 
-                                                let correct: string = '';
-                                                if (choice == question.answers.replace(/^[A-D]\) /, ''))
-                                                    correct = 'correct'
-                                                else if (choice == question.user_answer)
-                                                    correct = 'wrong'
-                                            
-                                                return (
-                                                    <div key={choiceIndex} className={`choice ${correct}`} onClick={() => {}}>
-                                                        {choice}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    ) : (
-                                        <div className='short-answer'>
-                                            <div className='answer'>{question.user_answer}</div>
-                                        </div>
-                                    )}
-                                </div>
-                                {(question.type == 'SHORT_ANSWER' || question.type == 'CODING') &&
-                                    <div className='question-answer'>
-                                        <div className='question-label'>Explanation</div>
-                                        <div className='short-answer'>
-                                            <div className='explanation'>{question.answers}</div>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                    ))
-                )}
-            </div>
+            <QuizQuestions 
+                quiz={quiz}
+                type={'graded'}
+            />
         </div>
     );
 }
