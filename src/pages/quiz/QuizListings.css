@@ -9,7 +9,7 @@
     width: 100%;
     height: 100%;
     margin-top: 100px;
-    background-color: #27272A;
+    background-color: var(--submain);
     left: 96px;
     border-right: 1px solid #555;
 }
@@ -31,7 +31,7 @@
     font-style:normal;
     font-weight:bold;
     font-family:'Montserrat';
-    color: #DDDADA;
+    color: var(--subheading);
 }
 
 .quiz-label {
@@ -67,10 +67,6 @@
 
 .minimize:hover {
     cursor: pointer;
-}
-
-.quiz-label {
-    margin-left: 5px;
 }
 
 .quizzes {

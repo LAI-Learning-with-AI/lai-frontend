@@ -13,12 +13,12 @@
 }
 
 .microphone.enabled {
-    background-color: #18A0FB;
+    background-color: var(--interactable);
     cursor: pointer;
 }
 
 .microphone.disabled {
-    background-color: #3F3F46;
+    background-color: var(--background);
     cursor: not-allowed;
 }
 

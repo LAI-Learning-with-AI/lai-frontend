@@ -13,7 +13,7 @@
 }
   
 .signup-main {
-    background: #1E1E1E;
+    background: var(--contrast);
     width: 50%;
     height: 100%;
     display: flex;
@@ -32,10 +32,10 @@
 }
 
 .two-column input {
-    background-color: #27272A;
+    background-color: var(--submain);
     border: 0;
     border-radius: 50px;
-    color: #FFFFFF;
+    color: var(--main);
     width: 48%;
     height: 100%;
     font-size: 30px;
@@ -70,14 +70,14 @@
 }
 
 .signup-redirect.enabled {
-    color: #18A0FB;
+    color: var(--interactable);
     font-weight: bold;
     cursor: not-allowed;
-    border-bottom: 5px solid #18A0FB;
+    border-bottom: 5px solid var(--interactable);
 }
 
 .signup-redirect.disabled {
-    color: #AEAEAE;
+    color: var(--description);
     font-weight: bold;
 }
 
@@ -92,10 +92,10 @@
 }
 
 .signup-middle .student-input {
-    background-color: #27272A;
+    background-color: var(--submain);
     border: 0;
     border-radius: 50px;
-    color: #FFFFFF;
+    color: var(--main);
     width: 90%;
     height: 30%;
     font-size: 30px;
@@ -104,7 +104,7 @@
 }
 
 .signup-middle input::placeholder {
-    color: #FFFFFF;
+    color: var(--main);
 }
 
 .signup-footer {
@@ -119,7 +119,7 @@
     width: 90%;
     height: 50%;
     font-size: 30px;
-    background-color: #18A0FB;
+    background-color: var(--interactable);
     border-radius: 50px;
 }
 
@@ -127,7 +127,7 @@
     width: 90%;
     height: 30%;
     font-size: 30px;
-    background-color: #18A0FB;
+    background-color: var(--interactable);
     border-radius: 50px;
     align-self: flex-start;
 }

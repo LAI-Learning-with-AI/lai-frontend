@@ -15,8 +15,6 @@ import Results from './pages/quiz/QuizResults.tsx'
 
 
 function App() {
-  const [light, setLight] = useState(false);
-
   return (
       <Router>
         <ToastContainer
@@ -32,23 +30,21 @@ function App() {
           theme="colored"
           transition={Bounce}
         />
-        <div className={`theme ${light ? 'light' : 'dark'}`}>
-          <Navbar/>
-          <div className='app-container'>
-            <div className='navbar-spacer'></div>
-            <Routes>
-              <Route path='/signup' element={<SignUp />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/learn' element={<LearnMode />} />
-              <Route path='/learn/:topic' element={<Topic />} />
-              <Route path='/' element={<ChatMode />} />
-              <Route path='/quizzes' element={<QuizMode />} />
-              <Route path='/quiz/:id' element={<InQuiz />} />
-              <Route path='/results/:id' element={<Results />} />
-            </Routes>
-          </div>
+        <Navbar/>
+        <div className='app-container'>
+          <div className='navbar-spacer'></div>
+          <Routes>
+            <Route path='/signup' element={<SignUp />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/learn' element={<LearnMode />} />
+            <Route path='/learn/:topic' element={<Topic />} />
+            <Route path='/' element={<ChatMode />} />
+            <Route path='/quizzes' element={<QuizMode />} />
+            <Route path='/quiz/:id' element={<InQuiz />} />
+            <Route path='/results/:id' element={<Results />} />
+          </Routes>
         </div>
-        </Router>
+      </Router>
   )
 }
 

@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #00000080;
+    background: var(--modal_bg);
     z-index: 1000;
   }
   
@@ -19,7 +19,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: bold;
-    color: #18a0fb;
+    color: var(--interactable);
     flex-direction: column;
     align-items: center;
     justify-content: center;

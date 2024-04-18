@@ -11,7 +11,7 @@
     display: flex;
     min-height: 400px;
     flex-direction: column;
-    background-color: #1E1E1E;
+    background-color: var(--contrast);
     width: 65%;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -21,7 +21,7 @@
 .questions-container .info {
     margin: 40px;
     font-weight: bolder;
-    color: #AEAEAE;
+    color: var(--description);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -46,19 +46,19 @@
 .questions-container .choice {
     padding: 15px;
     padding-bottom: 30px;
-    background-color: #27272A;
-    border: 1px solid #FFFFFF;
+    background-color: var(--submain);
+    border: 1px solid var(--main);
     min-height: 50px;
     width: calc(100% - 30px);
     border-radius: 20px;
 }
 
 .questions-container .choice.selected {
-    background-color: #18A0FB;
+    background-color: var(--interactable);
 }
 
 .questions-container .choice:hover {
-    background-color: #18A0FB;
+    background-color: var(--interactable);
     cursor: pointer;
 }
 
@@ -77,15 +77,15 @@
 .questions-container .question-label {
     margin-left: 40px;
     font-weight: bold;
-    color: #3F3F46;
+    color: var(--background);
     font-size: 16px;
 }
 
 .questions-container .short-answer Textarea {
     resize: none;
     width: calc(100% - 120px);
-    background-color: #27272A;
-    border-color: #FFFFFF;
+    background-color: var(--submain);
+    border-color: var(--main);
     border-radius: 20px;
     font-family: 'Montserrat';
     font-size: 24px;

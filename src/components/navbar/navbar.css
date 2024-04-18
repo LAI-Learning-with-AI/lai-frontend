@@ -2,7 +2,7 @@ nav {
     position: fixed;
     display: flex;
     flex-direction: column;
-    background-color: #18181B;
+    background-color: var(--main);
     width: 96px;
     left: 0;
     top: 0;
@@ -13,6 +13,7 @@ nav {
 }
 
 .icon {
+    color: var(--regular);
     margin: 25px;
     height: 30px;
     width: 30px;
@@ -32,11 +33,11 @@ nav {
     justify-content: left;
     width: 75px;
     height: 75px;
-    background-color: #27272A;
+    background-color: var(--submain);
     border-radius: 25px;
     cursor: pointer;
     transition: width 0.3s ease-in-out;
-    color:#ffffff
+    color:var(--main)
 }
 
 .nav-expanded .mode {
@@ -50,6 +51,7 @@ nav {
 .nav-expanded .label {
     opacity: 1;
     display: flex;
+    color: var(--regular);
     font-size: 32px;
     font-style: normal;
     font-weight: bold;
@@ -59,7 +61,7 @@ nav {
 
 nav a:hover .mode {
     display: flex;
-    background-color: #18A0FB;
+    background-color: var(--interactable);
 }
 
 nav:hover {

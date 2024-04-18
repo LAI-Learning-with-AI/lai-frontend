@@ -3,7 +3,7 @@
     height: 100%;
     top: 0;
     width: 100%;
-    color: white;
+    color: var(--regular);
     background-color: blue;
 }
 
@@ -13,7 +13,7 @@
     flex-shrink: 0;
     width: 301px;
     height: 100%;
-    background-color: #18181B;
+    background-color: var(--main);
     border-right: 1px solid #555;
 }
 
@@ -24,7 +24,7 @@
     height: 144px;
     justify-content: space-between;
     align-items: center;
-    background-color: #18181B;
+    background-color: var(--main);
     border-bottom: 1px solid #555;
     padding-left: 15px;
     padding-top: 20px;
@@ -47,17 +47,17 @@
     height: 50px;
     margin-right: 15px;
     margin-bottom: 20px;
-    background-color: #27272A;
+    background-color: var(--submain);
     width: 90%;
     border-radius: 20px;
 }
 
 .chat-search input::placeholder {
-    color: white;
+    color: var(--regular);
 }
 
 .create-chat-button {
-    background-color: #18A0FB;
+    background-color: var(--interactable);
     height: 50px;
     font-size: 20px;
     font-family: 'Montserrat';
@@ -94,7 +94,7 @@
     flex-grow: 1;
     gap: 40px;
     align-items: center;
-    background-color: #3F3F46;
+    background-color: var(--background);
     overflow-y: scroll;
     scroll-behavior: smooth;
     padding-bottom: 150px;
@@ -117,8 +117,8 @@
     padding-bottom: 30px;
     padding-left: 60px;
     padding-right: 60px;
-    background-color: #27272A;
-    color: white;
+    background-color: var(--submain);
+    color: var(--regular);
     font-family: 'Montserrat';
     border-radius: 10px;
     font-weight: 500;
@@ -134,7 +134,7 @@
 .chat-input {
     position: fixed;
     bottom: 30px;
-    background-color: #27272A;
+    background-color: var(--submain);
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
     height: auto;
     font-family: 'Montserrat';
@@ -152,7 +152,7 @@
     border: none;
     width: 100%;
     font-family: 'Montserrat';
-    background-color: #27272A;
+    background-color: var(--submain);
     font-size: 20px;
     resize: none;
     border-radius: 5px;
@@ -195,11 +195,11 @@
 }
 
 .chat-input-send.enabled {
-    background-color: #18A0FB;
+    background-color: var(--interactable);
     cursor: pointer;
 }
 
 .chat-input-send.disabled {
-    background-color: #3F3F46;
+    background-color: var(--background);
     cursor: not-allowed;
 }

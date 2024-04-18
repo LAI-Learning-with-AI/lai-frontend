@@ -11,7 +11,7 @@
 }
 
 .quiz:hover {
-    background-color: #18A0FB;
+    background-color: var(--interactable);
 }
 
 .quiz-buttons {
@@ -33,7 +33,7 @@
     justify-content: center;
     align-items: center;
     margin-left: 0px;
-    background-color: #1E1E1E;
+    background-color: var(--contrast);
     height: 60px;
     width: 60px;
     border-radius: 15px;
@@ -50,6 +50,7 @@
 }
 
 .quiz-title {
+    color: var(--heading);
     font-weight: bold;
     font-size: 20px;
     margin-left: 5px;
@@ -58,6 +59,6 @@
 .quiz-tags {
     font-weight: normal;
     font-size: 14px;
-    color: #DDDADA;
+    color: var(--subheading);
     margin-left: 5px;
 }

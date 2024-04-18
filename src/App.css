@@ -11,12 +11,3 @@
     width: 100px;
     flex-shrink: 0;
 }
-
-.theme.light {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    filter: invert(100%);
-}

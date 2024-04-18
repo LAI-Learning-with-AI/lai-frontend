@@ -6,7 +6,7 @@
     height: 100%;
     gap: 50px;
     overflow-y: scroll;
-    background-color: #27272A;
+    background-color: var(--submain);
     border-right: 1px solid #555;
     top: 0;
     font-family: 'Montserrat';
@@ -29,7 +29,7 @@
     justify-content: center;
     align-items: center;
     margin-left: 0px;
-    background-color: #27272A;
+    background-color: var(--submain);
     height: 60px;
     width: 60px;
     border-radius: 15px;
@@ -55,8 +55,8 @@
 
 .topic-box {
     width: 100%;
-    background-color: #1E1E1E;
-    color: white;
+    background-color: var(--contrast);
+    color: var(--regular);
     min-height: 100px;
     border-radius: 10px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
@@ -72,6 +72,6 @@
 }
 
 .topic-resource:not(:last-child) {
-    border-bottom: 4px solid #27272A;
+    border-bottom: 4px solid var(--submain);
 }
 

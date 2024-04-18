@@ -13,7 +13,10 @@ interface Props {
 }
 
 const PageHeader: React.FC<Props> = ({ name, quizgen, logout, type='normal', topic=''} ) => {
+    // modal toggle state for quiz gen modal
     const [quiz, setQuiz] = useState<boolean>(false);
+
+    // toggle light theme
 
     return (
         <>
@@ -30,7 +33,7 @@ const PageHeader: React.FC<Props> = ({ name, quizgen, logout, type='normal', top
                 <div className="page-header-buttons">
                     {quizgen && <button className='create-quiz' onClick={() => {setQuiz(true)}}>Generate Quiz</button> }
                     <div className='icons'>
-                        <button className='icon'>
+                        <button className='icon' onClick={() => document.documentElement.setAttribute('data-theme', 'dark')}>
                             <FontAwesomeIcon icon={faLightbulb} />
                         </button>
                         <button className='icon' onClick={() => logout()}>

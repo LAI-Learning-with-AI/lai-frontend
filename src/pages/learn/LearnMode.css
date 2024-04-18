@@ -6,7 +6,7 @@
     height: 100%;
     gap: 50px;
     overflow-y: scroll;
-    background-color: #27272A;
+    background-color: var(--submain);
     border-right: 1px solid #555;
     top: 0;
     font-family: 'Montserrat';

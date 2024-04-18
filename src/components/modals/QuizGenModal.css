@@ -4,13 +4,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #00000080;
+  background: var(--modal_bg);
   z-index: 1000;
 }
 
 .modal-main {
   position: absolute;
-  background: #1E1E1E;
+  background: var(--contrast);
   width: 820px;
   height: 780px;
   top: 50%;
@@ -84,7 +84,7 @@
 
 .modal-button .submit {
   font-weight: bold;
-  background-color: #18A0FB;
+  background-color: var(--interactable);
   border-radius: 20px;
   height: 40px;
   width: 160px;
@@ -106,13 +106,13 @@
 }
 
 .modal-input textarea {
-  background-color: #27272A;
+  background-color: var(--submain);
   height: 100px;
   resize: none;
-  border-color: white;
+  border-color: var(--regular);
   border-radius: 20px;
   padding: 20px;
-  color: white;
+  color: var(--regular);
   font-family: 'Montserrat';
 }
 
@@ -157,7 +157,7 @@
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: var(--regular);
   -webkit-transition: .4s;
   transition: .4s;
 }

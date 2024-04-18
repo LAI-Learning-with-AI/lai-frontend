@@ -4,7 +4,7 @@
     justify-content: center;
     width: 80%;
     height: auto;
-    background-color: #1E1E1E;
+    background-color: var(--contrast);
     border-radius: 15px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
 }

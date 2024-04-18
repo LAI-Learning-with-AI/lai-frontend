@@ -33,7 +33,7 @@ const SummaryChart: React.FC<Props> = ({ type, data } ) => {
         legend: {
             alignment: 'center',
             textStyle: {
-                color: '#ffffff',
+                color: 'var(--main)',
                 fontName: 'Montserrat',
                 fontSize: 24
             }
@@ -43,7 +43,7 @@ const SummaryChart: React.FC<Props> = ({ type, data } ) => {
             fontName: 'Montserrat',
             bold: true
         },
-        pieSliceBorderColor: '#1E1E1E',
+        pieSliceBorderColor: 'var(--contrast)',
         colors: ['#A6FF86', '#FF4E2E', '#FFFF4E']
     };
 
@@ -54,12 +54,12 @@ const SummaryChart: React.FC<Props> = ({ type, data } ) => {
         hAxis: { 
             title: 'Date',
             textStyle: {
-                color: '#ffffff',
+                color: 'var(--main)',
                 fontName: 'Montserrat',
                 fontSize: 12
             },
             titleTextStyle: {
-                color: '#ffffff',
+                color: 'var(--main)',
                 fontName: 'Montserrat',
                 fontSize: 16
             }
@@ -67,12 +67,12 @@ const SummaryChart: React.FC<Props> = ({ type, data } ) => {
         vAxis: { 
             title: 'Average Score',
             textStyle: {
-                color: '#ffffff',
+                color: 'var(--main)',
                 fontName: 'Montserrat',
                 fontSize: 12
             },
             titleTextStyle: {
-                color: '#ffffff',
+                color: 'var(--main)',
                 fontName: 'Montserrat',
                 fontSize: 16
             }
@@ -82,7 +82,7 @@ const SummaryChart: React.FC<Props> = ({ type, data } ) => {
             position: 'bottom',
             alignment: 'center',
             textStyle: {
-                color: '#ffffff',
+                color: 'var(--main)',
                 fontName: 'Montserrat',
                 fontSize: 16
             }
