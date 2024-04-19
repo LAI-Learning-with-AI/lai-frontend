@@ -11,7 +11,6 @@ const Loading: React.FC<LoadingProps> = ({ open }) => {
         <div className={`loading ${open ? "display-block" : "display-none"}`}>
             <div id="loading-main" className="loading-main">
                 <img src={spinner} alt="Loading..." />
-                <div>Generating Quiz...</div>
             </div>
         </div>
     );

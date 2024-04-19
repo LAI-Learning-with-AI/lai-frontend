@@ -29,8 +29,8 @@ function LearnMode() {
 
     // descriptions for the different categories
     const descriptions: string[] = [
-        "Topics where you've answered at least 10 quiz questions with an accuracy rate exceeding 80%.",
-        "Topics where you've answered at least 10 quiz questions but have an accuracy rate below 80%.",
+        "Topics where you've answered at least 10 quiz questions with an average accuracy rate exceeding 80%.",
+        "Topics where you've answered at least 10 quiz questions but have an average accuracy rate below 80%.",
         "Topics where you've answered fewer than 10 quiz questions."
     ];
 

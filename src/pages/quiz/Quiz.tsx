@@ -6,6 +6,7 @@ import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
 import { toast } from 'react-toastify';
 import PageHeader from '../../components/PageHeader';
 import QuizQuestions from '../../components/modes/quiz/QuizQuestions';
+import Loading from '../../components/modals/LoadingModal';
 
 // define interface for quiz
 interface QuizState {
@@ -37,6 +38,7 @@ function InQuiz() {
     const navigate = useNavigate();
 
     // states
+    const [loading, setLoading] = useState<boolean>(false);
     const [quiz, setQuiz] = useState<QuizState>();
     let { id } = useParams<{ id: string }>();
     const [selectedChoices, setSelectedChoices] = useState<(number | null)[]>(Array(quiz?.questions.length).fill(null));
@@ -44,6 +46,7 @@ function InQuiz() {
 
     // function to handle submit button press
     const handleSubmit = () => {
+        setLoading(true);
         console.log(selectedChoices);
         console.log(textAnswers);
         console.log(quiz?.questions.length);
@@ -83,6 +86,8 @@ function InQuiz() {
         .catch(error => {
             console.error(error);
             toast.error('Failed to submit quiz')
+        }).finally(() => {
+            setLoading(false);
         });
     }
 
@@ -110,25 +115,28 @@ function InQuiz() {
     }, [user]);
 
     return (
-        <div className='in-quiz'>
-            <PageHeader
-                name={quiz?.name ? quiz?.name : 'Quiz'}
-                quizgen={false}
-                logout={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}
-            />
-            <QuizQuestions 
-                quiz={quiz}
-                type={'quiz'}
-                selections={selectedChoices}
-                updateSelections={setSelectedChoices}
-                text={textAnswers}
-                updateText={setTextAnswers}
-            />
-            <div className="in-quiz-footer">
-                <div className='text'>{selectedChoices.filter(choice => choice !== null && choice !== undefined).length + textAnswers.filter(answer => answer !== '' && answer).length} of {quiz?.questions.length} answered</div>
-                <button className='submit-quiz' onClick={() => handleSubmit()}>Submit</button>
+        <>
+            <Loading open={loading} />
+            <div className='in-quiz'>
+                <PageHeader
+                    name={quiz?.name ? quiz?.name : 'Quiz'}
+                    quizgen={false}
+                    logout={() => logout({ logoutParams: { returnTo: import.meta.env.VITE_LOGOUT } })}
+                />
+                <QuizQuestions 
+                    quiz={quiz}
+                    type={'quiz'}
+                    selections={selectedChoices}
+                    updateSelections={setSelectedChoices}
+                    text={textAnswers}
+                    updateText={setTextAnswers}
+                />
+                <div className="in-quiz-footer">
+                    <div className='text'>{selectedChoices.filter(choice => choice !== null && choice !== undefined).length + textAnswers.filter(answer => answer !== '' && answer).length} of {quiz?.questions.length} answered</div>
+                    <button className='submit-quiz' onClick={() => handleSubmit()}>Submit</button>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 
