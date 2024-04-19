@@ -1,0 +1,28 @@
+.microphone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 8px 16px;
+    height: 50px;
+    width: 50px;
+    border: none;
+    border-radius: 15px;
+    margin-left: 10px;
+    outline: none;
+}
+
+.microphone.enabled {
+    background-color: var(--interactable);
+    cursor: pointer;
+}
+
+.microphone.disabled {
+    background-color: var(--background);
+    cursor: not-allowed;
+}
+
+.microphone.stop {
+    background-color: #FF5733;
+    cursor: pointer;
+}

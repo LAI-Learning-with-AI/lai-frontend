@@ -1,0 +1,208 @@
+.chat-mode {
+    display: flex; 
+    height: 100%;
+    top: 0;
+    width: 100%;
+    color: var(--regular);
+    background-color: blue;
+}
+
+.chat-sidebar {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 301px;
+    height: 100%;
+    background-color: var(--main);
+    border-right: 1px solid #555;
+}
+
+.chat-search {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    height: 144px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--main);
+    border-bottom: 1px solid #555;
+    padding-left: 15px;
+    padding-top: 20px;
+    font-size: 32px;
+    font-weight:bold;
+    font-family:'Montserrat';
+}
+
+.chat-search-top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.chat-search input {
+    border: none;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    color: var(--regular);
+    text-align: center;
+    height: 50px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    background-color: var(--submain);
+    width: 90%;
+    border-radius: 20px;
+}
+
+.chat-search input::placeholder {
+    color: var(--regular);
+}
+
+.create-chat-button {
+    background-color: var(--interactable);
+    height: 50px;
+    font-size: 20px;
+    font-family: 'Montserrat';
+    font-weight: bold;
+    padding: 10px;
+    margin-right: 20px;
+    border-radius: 20px;
+}
+
+.chat-recent {
+    margin-left: 15px;
+    padding-top: 5px;
+    height: 20px;
+    font-size: 14px;
+    font-style:normal;
+    font-weight:bold;
+    font-family:'Montserrat';
+    color: #DDDADA;
+}
+
+.chat-recent-label {
+    margin-left: 5px;
+}
+
+.chats {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 40px;
+    align-items: center;
+    background-color: var(--background);
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding-bottom: 150px;
+}
+
+.message-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
+    gap: 40px;
+    align-items: center;
+    margin-top: 150px;
+}
+
+.message-container .question-text {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 60px;
+    padding-right: 60px;
+    background-color: var(--submain);
+    color: var(--regular);
+    font-family: 'Montserrat';
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 24px;
+    word-wrap: break-all;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.chat-messages::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar for webkit-based browsers */
+}
+
+.chat-input {
+    position: fixed;
+    bottom: 30px;
+    background-color: var(--submain);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+    height: auto;
+    font-family: 'Montserrat';
+    font-size: 24px;
+    width: 40%;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-input Textarea {
+    padding-top: 10px;
+    height: 14px;
+    border: none;
+    width: 100%;
+    color: var(--regular);
+    font-family: 'Montserrat';
+    background-color: var(--submain);
+    font-size: 20px;
+    resize: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+.chat-input-send {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 8px 16px;
+    height: 50px;
+    width: 50px;
+    border: none;
+    border-radius: 15px;
+    margin-left: 10px;
+    outline: none;
+}
+
+.textarea.display-block {
+    display: block;
+}
+  
+.textarea.display-none {
+    display: none;
+}
+
+.textarea-buttons {
+    display: flex;
+
+}
+
+.img.display-block {
+    display: block;
+}
+  
+.img.display-none {
+    display: none;
+}
+
+.chat-input-send.enabled {
+    background-color: var(--interactable);
+    cursor: pointer;
+}
+
+.chat-input-send.disabled {
+    background-color: var(--background);
+    cursor: not-allowed;
+}
