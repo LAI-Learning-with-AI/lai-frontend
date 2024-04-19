@@ -5,9 +5,7 @@ import Navbar from './components/navbar/navbar.tsx';
 import ChatMode from './pages/chat/ChatMode.tsx';
 import InQuiz from './pages/quiz/Quiz.tsx';
 import QuizMode from './pages/quiz/QuizListings.tsx';
-import SignUp from './pages/register/signup.tsx';
 import './App.css';
-import Login from './pages/register/login.tsx';
 import LearnMode from './pages/learn/LearnMode.tsx';
 import Topic from './pages/learn/Topic.tsx';
 import Results from './pages/quiz/QuizResults.tsx';
@@ -58,8 +56,6 @@ const ThemeWrapper: React.FC = () => {
       <div className="app-container">
         <div className="navbar-spacer"></div>
         <Routes>
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/learn" element={<LearnMode />} />
           <Route path="/learn/:topic" element={<Topic />} />
           <Route path="/" element={<ChatMode />} />
