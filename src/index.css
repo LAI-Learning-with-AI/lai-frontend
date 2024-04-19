@@ -49,6 +49,7 @@ a:hover {
 }
 
 body {
+  zoom: 75%;
   margin: 0;
   display: flex;
   place-items: center;

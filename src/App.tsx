@@ -12,6 +12,7 @@ import LearnMode from './pages/learn/LearnMode.tsx';
 import Topic from './pages/learn/Topic.tsx';
 import Results from './pages/quiz/QuizResults.tsx';
 import 'react-toastify/dist/ReactToastify.css';
+import RegistrationModal from './components/modals/RegistrationModal.tsx';
 
 // context to manage theme
 const ThemeContext = createContext<{
@@ -52,6 +53,7 @@ const ThemeWrapper: React.FC = () => {
 
   return (
     <div className={`theme ${theme}`}>
+      <RegistrationModal />
       <Navbar />
       <div className="app-container">
         <div className="navbar-spacer"></div>
