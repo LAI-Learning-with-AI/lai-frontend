@@ -72,11 +72,16 @@ const QuizGenModal: React.FC<ModalProps> = ({ open, close, topic }) => {
         .then(response => response.json())
         .then((res) => {
             // remove loading screen
-            toast.success('Quiz generated successfully');
             setLoading(false);
 
-            // move into quiz
-            navigate(`/quiz/${res.quiz_id}`)
+            // check to ensure that the quiz actually generated successfully (the quiz id is valid)
+            if (res.quiz_id === undefined)
+                toast.error('Failed to generate quiz');
+            else {
+                // if it is successful, move into quiz
+                toast.success('Quiz generated successfully');
+                navigate(`/quiz/${res.quiz_id}`)
+            }
         })
         .catch(error => {
             // remove loading screen

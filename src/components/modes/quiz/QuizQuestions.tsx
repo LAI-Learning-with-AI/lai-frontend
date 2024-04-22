@@ -112,7 +112,7 @@ const QuizQuestions: React.FC<Props> = ({ quiz, type, selections, updateSelectio
                                      </div>
                                 )}
                             </div>
-                            {(type === 'graded' && question.type == 'SHORT_ANSWER' || question.type == 'CODING') &&
+                            {(type === 'graded' && (question.type == 'SHORT_ANSWER' || question.type == 'CODING')) &&
                                 <div className='question-answer'>
                                     <div className='question-label'>Explanation</div>
                                     <div className='graded-short-answer'>
