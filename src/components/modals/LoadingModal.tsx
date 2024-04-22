@@ -6,7 +6,7 @@ interface LoadingProps {
 }
 
 const Loading: React.FC<LoadingProps> = ({ open }) => {
-
+    // render modal for loading gif
     return (
         <div className={`loading ${open ? "display-block" : "display-none"}`}>
             <div id="loading-main" className="loading-main">

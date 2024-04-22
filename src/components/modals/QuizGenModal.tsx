@@ -15,6 +15,7 @@ interface ModalProps {
 }
 
 const QuizGenModal: React.FC<ModalProps> = ({ open, close, topic }) => {
+    // vars
     const [topics, setTopics] = useState<string>(topic);
     const [number, setNumber] = useState<number>(20);
     const [selectedSettings, setSelectedSettings] = useState<string[]>([]);

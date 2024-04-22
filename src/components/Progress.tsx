@@ -9,6 +9,7 @@ interface Props {
 }
 
 const Progress: React.FC<Props> = ({ type, score } ) => {
+    // if score is < 50%, make the font of the percentage red, else make it green
     let fontcolor = "#A6FF86"
     console.log(score)
     if(score < 0.50) {

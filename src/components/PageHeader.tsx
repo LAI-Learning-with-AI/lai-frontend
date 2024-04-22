@@ -16,9 +16,9 @@ interface Props {
 const PageHeader: React.FC<Props> = ({ name, quizgen, logout, type='normal', topic=''} ) => {
     // modal toggle state for quiz gen modal
     const [quiz, setQuiz] = useState<boolean>(false);
-    const { toggleTheme } = useTheme();
 
     // toggle light theme
+    const { toggleTheme } = useTheme();
 
     return (
         <>

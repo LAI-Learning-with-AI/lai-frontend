@@ -12,10 +12,11 @@ const RegistrationModal: React.FC = () => {
     // state to manage open/close of the modal
     const [open, setOpen] = useState<boolean>(false);
     const { user } = useAuth0();
-    const navigate = useNavigate();
 
+    // state to manage name input
     const [name, setName] = useState<string>('');
 
+    // fxn to create a new user on backend
     const create = () => {
         fetch(`${import.meta.env.VITE_SERVER}/createUser`, {
             method: 'POST',
@@ -34,6 +35,7 @@ const RegistrationModal: React.FC = () => {
         });
     }
 
+    // when user is rendered, check if the user exists in the database. if it doesnt then prompt user to finish registration (render this modal)
     useEffect(() => {
         // request
         fetch(`${import.meta.env.VITE_SERVER}/checkUser`, {
@@ -49,9 +51,7 @@ const RegistrationModal: React.FC = () => {
         .then((res) => {
             // remove loading screen
             console.log(res.exists)
-            if (res.exists)
-                setOpen(false);
-            else setOpen(true);
+            setOpen(!res.exists)
         })
         .catch(error => {
             // remove loading screen
