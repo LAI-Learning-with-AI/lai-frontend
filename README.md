@@ -15,7 +15,7 @@ npm install --global yarn
 cd lai-frontend
 yarn install
 ```
-Then rename ```.env.sample``` to ```.env``` and add backend ```FLASK_API``` server URL to ```VITE_SERVER```
+Create ```.env``` in the project root directory and copy the contents of  ```.env.sample``` into ```.env``` and add backend ```FLASK_API``` server URL to ```VITE_SERVER```
 
 ### Auth0 Setup 
 - Create an account on [Auth0](https://auth0.com/signup)
