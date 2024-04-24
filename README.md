@@ -24,7 +24,7 @@ Then rename ```.env.sample``` to ```.env``` and add backend ```FLASK_API``` serv
   - Add ```http://localhost:5173``` to ```Allowed Logout Urls```
   - Add ```http://localhost:5173``` to ```Allowed Web Origins```
   - Add ```http://localhost:5173``` to ```Allowed Origins (CORS)``` under ```Cross-Origin Authentication```
-- Fill in ```.env``` with ```Domain``` for VITE_AUTH0_DOMAIN, ```Client ID``` for ```VITE_AUTH0_CLIENTID```, ```http://localhost:5173``` for ```VITE_AUTH0_CALLBACK```, and ```http://localhost:5173``` for ```VITE_AUTH0_LOGOUT```
+- Fill in ```.env``` with ```Domain``` for ```VITE_AUTH0_DOMAIN```, ```Client ID``` for ```VITE_AUTH0_CLIENTID```, ```http://localhost:5173``` for ```VITE_AUTH0_CALLBACK```, and ```http://localhost:5173``` for ```VITE_AUTH0_LOGOUT```
 
 
 ## Run
